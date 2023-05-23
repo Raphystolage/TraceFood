@@ -30,7 +30,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Other directories ###
-backend/
-mobile-app/
