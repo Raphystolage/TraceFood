@@ -1,15 +1,10 @@
-package hr.algebra.tracefood.backend.model;
+package hr.algebra.tracefood.webapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name="ClassTest")
-
+@Component
 public class ClassTest {
 
-    @Id
     private Long arg1;
     private String arg2;
 
