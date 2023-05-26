@@ -15,7 +15,7 @@ public class ConsumerTest {
             System.out.println(consumer.getPseudo()+" "+consumer.getEmailAddress()+" "+consumer.getPassword());
         }
     }
-    public static void getByIdTest(Long id) { //Fais un getAllTest() pou voir les id dispo
+    public static void getByIdTest(Long id) { //Fais un getAllTest() pour voir les id dispo
         Consumer readConsumer = consumerService.getById(id);
         System.out.println(readConsumer.getPseudo()+" "+readConsumer.getEmailAddress()+" "+readConsumer.getPassword());
     }
