@@ -1,5 +1,7 @@
 package hr.algebra.tracefood.webapp.model;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.util.List;
 
 public abstract class User {
@@ -14,7 +16,7 @@ public abstract class User {
     public User(Long id, String emailAddress, String password, String companyName, List<CertificationType> giveableCertifications) {
         this.id = id;
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.password = DigestUtils.sha256Hex(password);
         this.companyName = companyName;
         this.giveableCertifications = giveableCertifications;
     }

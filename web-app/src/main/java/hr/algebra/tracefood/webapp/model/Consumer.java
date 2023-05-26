@@ -1,5 +1,7 @@
 package hr.algebra.tracefood.webapp.model;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 public class Consumer {
 
     private Long id;
@@ -12,7 +14,7 @@ public class Consumer {
         this.id = id;
         this.pseudo = pseudo;
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.password = DigestUtils.sha256Hex(password);
     }
 
     public Long getId() {
