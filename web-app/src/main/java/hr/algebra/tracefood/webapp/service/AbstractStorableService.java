@@ -3,20 +3,18 @@ package hr.algebra.tracefood.webapp.service;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
 
-@Component
 public class AbstractStorableService<T> {
 
+    protected final String BASE_URL = "http://localhost:8080";
     protected final String url;
     protected final Class<T> responseType;
 
     public AbstractStorableService(String url,Class<T> responseType) {
-        String BASE_URL = "http://localhost:8080";
         this.url = BASE_URL +url;
         this.responseType = responseType;
     }
