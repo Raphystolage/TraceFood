@@ -37,7 +37,7 @@ public class Consumer {
     public void setId(Long id) {
         this.id = id;
     }
-    public void setUsername(String pseudo) {
+    public void setUsername(String username) {
         this.username = username;
     }
     public void setEmailAddress(String emailAddress) {
