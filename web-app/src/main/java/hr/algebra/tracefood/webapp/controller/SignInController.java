@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class SignInController {
-
+/*
     @Autowired
     public ProcessorService processorService;
 
@@ -34,42 +35,44 @@ public class SignInController {
     public final List<Distributor> distributors = distributorService.getAll();
     public final List<Producer> producers = producerService.getAll();
     public final List<Seller> sellers = sellerService.getAll();
-
+*/
     @GetMapping("/signIn")
     public String signIn(Model model) {
         model.addAttribute("error", false);
         return "signIn";
     }
 
+    @GetMapping("/chooseUserType")
+    public String chooseUserType(Model model) {
+        return "chooseUserType";
+    }
+
+/*
     @PostMapping("/login")
     public String SignIn(@RequestParam("emailAddress") String emailAddress, @RequestParam("password") String password, Model model) {
+
         boolean connexionSuccessful = false;
-        for (Processor processor : processors) {
-            if (processor.getEmailAddress().equals(emailAddress) && processor.getPassword().equals(password)) {
+        List<User> users = new ArrayList<>();
+
+        users.addAll(processors);
+        users.addAll(producers);
+        users.addAll(sellers);
+
+        for (User user : users) {
+            if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(password)) {
                 connexionSuccessful = true;
             }
         }
-        for (Distributor distributor : distributors) {
-            if (distributor.getEmailAddress().equals(emailAddress) && distributor.getPassword().equals(password)) {
-                connexionSuccessful = true;
-            }
-        }
-        for (Producer producer : producers) {
-            if (producer.getEmailAddress().equals(emailAddress) && producer.getPassword().equals(password)) {
-                connexionSuccessful = true;
-            }
-        }
-        for (Seller seller : sellers) {
-            if (seller.getEmailAddress().equals(emailAddress) && seller.getPassword().equals(password)) {
-                connexionSuccessful = true;
-            }
-        }
+
         if (connexionSuccessful) {
             model.addAttribute("error", true);
+            //TODO creer la session
             return "redirect:/signUpDistributor"; //TODO retourner la bonne page
         } else {
-            return "signUpDistributor"; //TODO retourner la bonne page
+            return "signUpDistributor";
         }
     }
+
+ */
 
 }

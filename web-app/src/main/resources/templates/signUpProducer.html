@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TRACEFOOD</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body>
+<div class="w-layout-layout-column center-box wf-layout-layout">
+  <div class="w-layout-cell">
+    <h1 class="tracefood">TRACEFOOD</h1>
+
+    <div class="w-layout-cell cell-3 w-layout-layout-column">
+      <form class="signUpForm" action="/signUpProducer" method="POST">
+        <div class="w-layout-layout-column connection-fields">
+          <div class="w-layout-column">
+            <div class="w-layout-cell cell-4">
+              <p class="sign-button w-button">Company name</p>
+            </div>
+            <div class="w-layout-cell cell-4">
+              <p class="sign-button w-button">Company addess</p>
+            </div>
+            <div class="w-layout-cell cell-4">
+              <p class="sign-button w-button">Type</p>
+            </div>
+            <div class="w-layout-cell cell-5">
+              <p class="sign-button w-button">Email address</p>
+            </div>
+            <div class="w-layout-cell cell-6">
+              <p class="sign-button w-button">Password</p>
+            </div>
+          </div>
+          <div class="w-layout-column">
+            <div class="w-layout-cell cell-4">
+              <input name="companyName" class="sign-in-field w-button" type="text" />
+            </div>
+            <div class="w-layout-cell cell-4">
+              <input name="companyAddress" class="sign-in-field w-button" type="text" />
+            </div>
+            <div class="w-layout-cell cell-4">
+
+              <select id="type" name="type" class="sign-in-field w-button">//TODO arranger les options
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="uk">UK</option>
+                <option value="france">France</option>
+              </select>
+
+            </div>
+            <div class="w-layout-cell cell-5">
+              <input name="emailAddress" class="sign-in-field w-button" placeholder="name@example.com" type="email" />
+            </div>
+            <div class="w-layout-cell cell-6">
+              <input name="password" class="sign-in-field w-button" type="password" />
+            </div>
+          </div>
+        </div>
+        <div class="w-layout-cell cell-2">
+          <div class="w-layout-layout sign-in wf-layout-layout">
+            <div class="w-layout-cell cell-9">
+              <button type="submit" class="sign-button w-button sign-submit">Sign up</button>
+            </div>
+            <div th:if="${error}" class="error-message">This email address is already used.</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

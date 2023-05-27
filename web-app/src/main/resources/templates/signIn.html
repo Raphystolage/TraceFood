@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" style="font-family: Arial; ">
+
+	<head>
+		<meta charset="UTF-8">
+		<title> TRACEFOOD </title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+
+	<body>
+	<div id="w-node-signIn1" class="w-layout-layout center-box wf-layout-layout">
+		<div id="w-node-signIn2" class="w-layout-cell">
+			<h1 class="tracefood">TRACEFOOD</h1>
+		</div>
+		<div id="w-node-signIn3" class="w-layout-cell cell-3">
+			<form id="signInForm" action="/login" method="POST">
+				<div id="w-node-signIn5" class="w-layout-layout connection-fields wf-layout-layout">
+					<div id="w-node-signIn6" class="w-layout-cell cell-4">
+						<label for="emailAddress" class="sign-button w-button">Email address</label>
+					</div>
+					<div id="w-node-signIn7" class="w-layout-cell cell-5">
+						<input id="emailAddress" name="emailAddress" class="sign-in-field w-button" type="email" placeholder="name@example.com" required />
+					</div>
+					<div id="w-node-signIn8" class="w-layout-cell cell-6">
+						<label for="password" class="sign-button w-button">Password</label>
+					</div>
+					<div id="w-node-signIn9" class="w-layout-cell cell-7">
+						<input id="password" name="password" class="sign-in-field w-button" type="password" required />
+					</div>
+				</div>
+				<div id="w-node-signIn10" class="w-layout-cell cell-2">
+					<div id="w-node-signIn11" class="w-layout-layout sign-in wf-layout-layout">
+						<div id="w-node-signIn12" class="w-layout-cell cell-9">
+							<button type="submit" class="sign-submit sign-button w-button">Sign in</button>
+							<a th:href="@{/chooseUserType}" class="w-inline-block">
+								<div class="text-block">New on the website? Sign up here</div>
+							</a>
+							<div th:if="${error}" class="error-message">The email address or the password is wrong.</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	</body>
+
+</html>

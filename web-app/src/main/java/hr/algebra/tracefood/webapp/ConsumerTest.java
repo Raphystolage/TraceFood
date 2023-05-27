@@ -44,6 +44,7 @@ public class ConsumerTest {
     }
 
     public static void main(String[] args) {
+        consumerService.create(new Consumer(null,"name","email","pwd"));
         //Les mdp seront incompréhensibles car hashés
     }
 
