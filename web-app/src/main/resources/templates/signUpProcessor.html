@@ -18,31 +18,31 @@
                 <div class="w-layout-layout-column connection-fields">
                     <div class="w-layout-column">
                         <div class="w-layout-cell cell-4">
-                            <p class="sign-button w-button">Company name</p>
+                            <p class="sign-button  ">Company name</p>
                         </div>
                         <div class="w-layout-cell cell-4">
-                            <p class="sign-button w-button">Company addess</p>
+                            <p class="sign-button  ">Company addess</p>
                         </div>
                         <div class="w-layout-cell cell-4">
-                            <p class="sign-button w-button">Type</p>
+                            <p class="sign-button  ">Type</p>
                         </div>
                         <div class="w-layout-cell cell-5">
-                            <p class="sign-button w-button">Email address</p>
+                            <p class="sign-button  ">Email address</p>
                         </div>
                         <div class="w-layout-cell cell-6">
-                            <p class="sign-button w-button">Password</p>
+                            <p class="sign-button  ">Password</p>
                         </div>
                     </div>
                     <div class="w-layout-column">
                         <div class="w-layout-cell cell-4">
-                            <input name="companyName" class="sign-in-field w-button" type="text" />
+                            <input name="companyName" class="sign-in-field " type="text" required/>
                         </div>
                         <div class="w-layout-cell cell-4">
-                            <input name="companyAddress" class="sign-in-field w-button" type="text" />
+                            <input name="companyAddress" class="sign-in-field " type="text" required/>
                         </div>
                         <div class="w-layout-cell cell-4">
 
-                            <select id="type" name="type" class="sign-in-field w-button">//TODO arranger les options
+                            <select id="type" name="type" class="sign-in-field " required>//TODO arranger les options
                                 <option value="usa">USA</option>
                                 <option value="canada">Canada</option>
                                 <option value="uk">UK</option>
@@ -51,17 +51,17 @@
 
                         </div>
                         <div class="w-layout-cell cell-5">
-                            <input name="emailAddress" class="sign-in-field w-button" placeholder="name@example.com" type="email" />
+                            <input name="emailAddress" class="sign-in-field " placeholder="name@example.com" type="email" required/>
                         </div>
                         <div class="w-layout-cell cell-6">
-                            <input name="password" class="sign-in-field w-button" type="password" />
+                            <input name="password" class="sign-in-field  " type="password" required/>
                         </div>
                     </div>
                 </div>
                 <div class="w-layout-cell cell-2">
                     <div class="w-layout-layout sign-in wf-layout-layout">
                         <div class="w-layout-cell cell-9">
-                            <button type="submit" class="sign-button w-button sign-submit">Sign up</button>
+                            <button type="submit" class="sign-button   sign-submit">Sign up</button>
                         </div>
                         <div th:if="${error}" class="error-message">This email address is already used.</div>
                     </div>

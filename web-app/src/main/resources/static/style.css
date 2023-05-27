@@ -87,7 +87,12 @@
   padding: 7px;
 }
 
-.sign-button w-button {
+.homeButton{
+  border: black;
+  border: solid;
+}
+
+.sign-button{
   border: none;
 }
 
@@ -111,12 +116,6 @@
 #type{
   padding: 7px;
   width: 185px;
-}
-
-.cell-2 {
-  margin-left: auto;
-  margin-right: auto;
-
 }
 
 .user {
@@ -156,7 +155,7 @@
   margin-right: auto;
 }
 
-.connection-fields, .cell-5, .cell-6, .cell-7 {
+.connection-fields, .cell-5, .cell-6, .cell-7, .cell-2, cell-9 {
   margin-left: auto;
   margin-right: auto;
 }
@@ -174,11 +173,6 @@
   border: none;
   width: 90px;
   padding: 5px;
-}
-
-.cell-9 {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .text-block {
@@ -218,36 +212,36 @@
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
-#w-node-signIn1 {
+#w-node-1 {
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr;
 }
 
 
-#w-node-signIn4,
-#w-node-signIn3 {
+#w-node-4,
+#w-node-3 {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
-#w-node-signIn5 {
+#w-node-5 {
   grid-template-rows: auto auto auto auto;
   grid-template-columns: 1fr;
 }
 
-#w-node-signIn6,
-#w-node-signIn7,
-#w-node-signIn8,
-#w-node-signIn9,
-#w-node-signIn10 {
+#w-node-6,
+#w-node-7,
+#w-node-8,
+#w-node-9,
+#w-node-10 {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
-#w-node-signIn11 {
+#w-node-11 {
   grid-template-rows: auto;
   grid-template-columns: 1fr;
 }
 
-#w-node-signIn12 {
+#w-node-12 {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 

@@ -64,7 +64,7 @@ public class SignUpController {
         if (signUpSuccessful) {
             Processor newProcessor = new Processor(null, companyName, companyAddress, type, emailAddress, type, password, null);
             processorService.create(newProcessor);
-            return "redirect:/signUpProcessor"; //TODO retourner la bonne page
+            return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
@@ -85,7 +85,7 @@ public class SignUpController {
         if (signUpSuccessful) {
             Processor newProcessor = new Processor(null, companyName, companyAddress, type, emailAddress, type, password, null);
             processorService.create(newProcessor);
-            return "redirect:/signUpProcessor"; //TODO retourner la bonne page
+            return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
@@ -107,7 +107,7 @@ public class SignUpController {
         if (signUpSuccessful) {
             Producer newProducer = new Producer(null, companyName, companyAddress, type, emailAddress, password, null);
             producerService.create(newProcessor);
-            return "redirect:/signUpProducer"; //TODO retourner la bonne page
+            return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
@@ -127,7 +127,7 @@ public class SignUpController {
         if (signUpSuccessful) {
             Distributor newDistributor = new Distributor(null, companyName, emailAddress, password, null);
             distributorService.create(newDistributor);
-            return "redirect:/signUpDistributor"; //TODO retourner la bonne page
+            return "redirect:/userHomePage";
         } else {
             model.addAttribute("error", true);
             return "signUpDistributor";
