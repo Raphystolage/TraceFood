@@ -36,9 +36,4 @@ public class AbstractStorableService<T> {
         return List.of(Objects.requireNonNull(response.getBody()));
     }
 
-    public void deleteById(Long id) {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(this.url+"/"+id);
-    }
-
 }
