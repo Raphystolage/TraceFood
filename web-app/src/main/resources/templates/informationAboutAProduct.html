@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TRACEFOOD</title>
+  <link rel="stylesheet" type="text/css" href="style2.css" />
+
+</head>
+
+<body>
+
+<header class="wf-layout-layout">
+  <div class="w-layout-cell">
+    <h1 class="tracefood">TRACEFOOD</h1>
+  </div>
+</header>
+
+<div class="menu">
+  <ul>
+    <li><a th:href="@{/accountInformation}">Account information</a></li>
+    <li><a th:href="@{/informationAboutAProduct}">Information about a product</a></li>
+    <li><a th:href="@{/addAProduct}">Add a product</a></li>
+    <li><a th:href="@{/history}">History</a></li>
+  </ul>
+</div>
+
+<div class="w-layout-layout-column center-box-user wf-layout-layout">
+
+  <div class="w-layout-cell cell-3 w-layout-layout-column">
+
+    <div class="wf-layout-layout">
+
+      <div id="w-node-2" class="w-layout-cell">
+        <form id="searchForm" action="/informationAboutAProduct" method="POST">
+          <span>Identification number :
+            <input name="idProduct" class="sign-in-field"/>
+          </span>
+          <button type="submit" class="search-button clickableButton">Search</button>
+        </form>
+      </div>
+
+      <div class="w-layout-layout-column connection-fields informationBox">
+        <div class="w-layout-column">
+          <div class="w-layout-cell">
+            <p class="informationItem">Identification number</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell">
+            <p class="informationItem rightText">th:text="${identificationNumber}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-layout-layout-column connection-fields informationBox">
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="">Product name</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="rightText">th:text="${productName}</p>
+          </div>
+        </div>
+      </div>
+
+      <div th:each="operation : ${operations}" th:text="${operation}">
+
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="rightText">th:text="${operations.getId()}</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="rightText">th:text="${operations.getDescription()}</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="rightText">th:text="${operations.getAddedCertifications()}</p>
+          </div>
+        </div>
+
+        <div th:switch="${operation.toString()}">
+
+          <div th:case="Sell">
+            <p th:with="sell=${(Sell) operation}">
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${sell.getProduct()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${sell.getSeller()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${sell.getBuyer()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${sell.getDate()}</p>
+              </div>
+            </div>
+          </div>
+
+          <div th:case="Processing">
+            <p th:with="processing=${(Processing) operation}">
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${processing.getOriginProduct()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${processing.getNewProduct()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${processing.getProcessor()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${processing.getDate()}</p>
+              </div>
+            </div>
+          </div>
+
+          <div th:case="Production">
+            <p th:with="production=${(Production) operation}">
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getCreatedProduct()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getProducer()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getDate()}</p>
+              </div>
+            </div>
+          </div>
+
+          <div th:case="Transport">
+            <p th:with="transformations=${(Transformation) operation}">
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getProduct()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getSender()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getReceiver()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getDeparture()}</p>
+              </div>
+            </div>
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem">
+                <p class="rightText">th:text="${production.getDArrival()}</p>
+              </div>
+            </div>
+          </div>
+
+          <div th:case="*">La valeur n'est pas prise en charge</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</body>
+
+</html>

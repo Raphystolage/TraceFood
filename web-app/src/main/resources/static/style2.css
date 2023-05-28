@@ -1,4 +1,8 @@
 /* General Structure */
+.header{
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .body {
     border-radius: 20px;
@@ -15,11 +19,34 @@
     padding-bottom: 40px;
 }
 
+.center-box-user {
+    width: 1600px;
+    background-color: rgba(130, 180, 122, .25);
+    border-radius: 20px;
+    margin: 70px auto auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
 .tracefood {
     color: #aa063f;
     margin-left: auto;
     margin-right: auto;
     font-family: Exo, sans-serif;
+}
+
+.sign-button {
+    max-height: 25px;
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    background-color: #62ac3f;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    padding: 7px;
 }
 
 .w-layout-layout {
@@ -53,6 +80,7 @@
 }
 
 .rightText{
+    width: 750px;
     text-align: right;
 }
 
@@ -60,7 +88,18 @@
     justify-content: center;
 }
 
-.user:hover, .sign-submit:hover, .homeButton:hover{
+.clickableButton{
+    background-color: #62ac3f;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    padding: 7px;
+    color: #fff;
+
+}
+
+.clickableButton:hover{
     background-color: #307211;
 }
 
@@ -112,11 +151,13 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 40px;
 }
 
-.connection-fields, .cell-5, .cell-6, .cell-7, .cell-2, cell-9 {
+.connection-fields, .cell-5, .cell-2, cell-9 {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .cell-8 {
@@ -143,14 +184,9 @@
 .user {
     max-height: 25px;
     width: 100px;
-    text-align: center;
-    background-color: #62ac3f;
-    border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
-    color: #fff;
     padding: 7px;
-    text-decoration: none;
 }
 
 .users {
@@ -189,22 +225,6 @@
 
 /* Sign in and Sign up pages */
 
-.sign-button {
-    max-height: 25px;
-    width: 170px;
-    text-align: center;
-    background-color: #62ac3f;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-    padding: 7px;
-}
-
-.sign-button{
-    border: none;
-}
-
 .sign-in-field {
     color: #306e45;
     background-color: #fff;
@@ -229,7 +249,6 @@
 }
 
 .sign-submit{
-    border: none;
     width: 90px;
     padding: 5px;
 }
@@ -249,23 +268,69 @@
 .homeButton{
     max-height: 25px;
     width: 230px;
-    text-align: center;
-    background-color: #62ac3f;
-    border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
-    color: #fff;
-    padding: 7px;
 }
 
-.cell-3, .cell-4, .cell-5, .cell-6, .cell-7 {
+.cell-3, .cell-4, .cell-5{
     margin-bottom: 20px;
 }
 
 /* Account information */
 
+.informationItem{
+    border-color: #000000;
+}
+
 .informationBox{
-    border-color: #aa063f;
-    width: 420px;
-    border-bottom: solid;
+    width: 1500px;
+    border-bottom: solid 1px;
+}
+
+.delete-button{
+    margin-top: 20px;
+    max-height: 30px;
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* information about a product*/
+
+.search-button{
+    margin-top: 20px;
+    max-height: 30px;
+    width: 80px;
+    margin-left: 5px;
+}
+
+/* menu */
+
+.menu {
+    padding: 10px;
+    margin-right: 400px;
+    margin-left: 400px;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu li a {
+    color: #333;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    color: #307211;
 }

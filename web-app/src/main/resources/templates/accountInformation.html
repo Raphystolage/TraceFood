@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style2.css" />
 
 </head>
 
@@ -16,8 +16,16 @@
   </div>
 </header>
 
-<div class="w-layout-layout-column center-box wf-layout-layout">
+<div class="menu">
+  <ul>
+    <li><a th:href="@{/accountInformation}">Account information</a></li>
+    <li><a th:href="@{/informationAboutAProduct}">Information about a product</a></li>
+    <li><a th:href="@{/addAProduct}">Add a product</a></li>
+    <li><a th:href="@{/history}">History</a></li>
+  </ul>
+</div>
 
+<div class="w-layout-layout-column center-box-user wf-layout-layout">
 
     <div class="w-layout-cell cell-3 w-layout-layout-column">
 
@@ -62,11 +70,11 @@
           </div>
         </div>
 
-        <div class="w-layout-layout-column connection-fields informationBox">
+        <div class="w-layout-layout-column connection-fields">
           <div class="w-layout-column">
-            <div class="w-layout-cell informationItem">
+            <div class="w-layout-cell informationItem cell-5">
               <form id="deleteForm" action="/deleteAccount" method="DELETE">
-                <button type="submit" class="homeButton">Delete the account</button>
+                <button type="submit" class="delete-button clickableButton">Delete the account</button>
               </form>
             </div>
           </div>

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class accountController {
+public class AccountController {
 /*
     @Autowired
     private HttpServletRequest request;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TRACEFOOD</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style2.css" />
 
 </head>
 
@@ -17,32 +17,32 @@
             <form class="signUpForm" action="/signUpProcessorProcessor" method="POST">
                 <div class="w-layout-layout-column connection-fields">
                     <div class="w-layout-column">
-                        <div class="w-layout-cell cell-4">
-                            <p class="sign-button  ">Company name</p>
-                        </div>
-                        <div class="w-layout-cell cell-4">
-                            <p class="sign-button  ">Company addess</p>
-                        </div>
-                        <div class="w-layout-cell cell-4">
-                            <p class="sign-button  ">Type</p>
+                        <div class="w-layout-cell cell-5">
+                            <p class="sign-button">Company name</p>
                         </div>
                         <div class="w-layout-cell cell-5">
-                            <p class="sign-button  ">Email address</p>
+                            <p class="sign-button">Company addess</p>
                         </div>
-                        <div class="w-layout-cell cell-6">
-                            <p class="sign-button  ">Password</p>
+                        <div class="w-layout-cell cell-5">
+                            <p class="sign-button">Type</p>
+                        </div>
+                        <div class="w-layout-cell cell-5">
+                            <p class="sign-button">Email address</p>
+                        </div>
+                        <div class="w-layout-cell cell-5">
+                            <p class="sign-button">Password</p>
                         </div>
                     </div>
                     <div class="w-layout-column">
-                        <div class="w-layout-cell cell-4">
-                            <input name="companyName" class="sign-in-field " type="text" required/>
+                        <div class="w-layout-cell cell-5">
+                            <input name="companyName" class="sign-in-field" type="text" required/>
                         </div>
-                        <div class="w-layout-cell cell-4">
-                            <input name="companyAddress" class="sign-in-field " type="text" required/>
+                        <div class="w-layout-cell cell-5">
+                            <input name="companyAddress" class="sign-in-field" type="text" required/>
                         </div>
-                        <div class="w-layout-cell cell-4">
+                        <div class="w-layout-cell cell-5">
 
-                            <select id="type" name="type" class="sign-in-field " required>//TODO arranger les options
+                            <select id="type" name="type" class="sign-in-field " required>
                                 <option value="flourMiller">Flour miller</option>
                                 <option value="meatProcessor">Meat processor</option>
                                 <option value="dairyProcessor">Dairy processor</option>
@@ -57,17 +57,17 @@
 
                         </div>
                         <div class="w-layout-cell cell-5">
-                            <input name="emailAddress" class="sign-in-field " placeholder="name@example.com" type="email" required/>
+                            <input name="emailAddress" class="sign-in-field" placeholder="name@example.com" type="email" required/>
                         </div>
-                        <div class="w-layout-cell cell-6">
-                            <input name="password" class="sign-in-field  " type="password" required/>
+                        <div class="w-layout-cell cell-5">
+                            <input name="password" class="sign-in-field" type="password" required/>
                         </div>
                     </div>
                 </div>
                 <div class="w-layout-cell cell-2">
                     <div class="w-layout-layout sign-in wf-layout-layout">
                         <div class="w-layout-cell cell-9">
-                            <button type="submit" class="sign-button   sign-submit">Sign up</button>
+                            <button type="submit" class="sign-button clickableButton sign-submit">Sign up</button>
                         </div>
                         <div th:if="${error}" class="error-message">This email address is already used.</div>
                     </div>
