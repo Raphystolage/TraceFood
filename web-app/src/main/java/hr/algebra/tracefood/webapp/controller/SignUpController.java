@@ -1,7 +1,7 @@
 package hr.algebra.tracefood.webapp.controller;
 
 import hr.algebra.tracefood.webapp.model.*;
-import hr.algebra.tracefood.webapp.service.DistributorService;
+import hr.algebra.tracefood.webapp.service.HoReCaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +16,13 @@ public class SignUpController {
 
 /*
     @Autowired
-    public DistributorService distributorService;
-    public final List<Distributor> distributors = distributorService.getAll();
+    public HoReCaService hoReCaService;
+    public final List<HoReCa> hoReCas = hoReCaService.getAll();
 */
 
-    @GetMapping("/signUpDistributor")
-    public String signUpDistributor() {
-        return "signUpDistributor";
+    @GetMapping("/signUpHoReCa")
+    public String signUpHoReCa() {
+        return "signUpHoReCa";
     }
 
     @GetMapping("/signUpProducer")
@@ -116,21 +116,21 @@ public class SignUpController {
 
     }
 
-    @PostMapping("/signUpDistributor")
-    public String SignUpDistributorForm(@RequestParam("companyName") String companyName,
+    @PostMapping("/signUpHoReCa")
+    public String SignUpHoReCaForm(@RequestParam("companyName") String companyName,
                                     @RequestParam("emailAddress") String emailAddress,
                                     @RequestParam("password") String password, Model model) {
 
-        boolean signUpSuccessful = userAlreadyExist(distributors, emailAddress)
+        boolean signUpSuccessful = userAlreadyExist(hoReCas, emailAddress)
 
         }
         if (signUpSuccessful) {
-            Distributor newDistributor = new Distributor(null, companyName, emailAddress, password, null);
-            distributorService.create(newDistributor);
+            HoReCa newHoReCa = new HoReCa(null, companyName, emailAddress, password, null);
+            hoReCaService.create(newHoReCa);
             return "redirect:/userHomePage";
         } else {
             model.addAttribute("error", true);
-            return "signUpDistributor";
+            return "signUpHoReCa";
         }
     }
 

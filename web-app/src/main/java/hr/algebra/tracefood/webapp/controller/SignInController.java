@@ -2,10 +2,12 @@ package hr.algebra.tracefood.webapp.controller;
 
 
 import hr.algebra.tracefood.webapp.model.*;
-import hr.algebra.tracefood.webapp.service.DistributorService;
+import hr.algebra.tracefood.webapp.service.HoReCaService;
 import hr.algebra.tracefood.webapp.service.ProcessorService;
 import hr.algebra.tracefood.webapp.service.ProducerService;
 import hr.algebra.tracefood.webapp.service.SellerService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +22,13 @@ import java.util.List;
 public class SignInController {
 /*
     @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
     public ProcessorService processorService;
 
     @Autowired
-    public DistributorService distributorService;
+    public HoReCaService hoReCaService;
 
     @Autowired
     public ProducerService producerService;
@@ -32,7 +37,7 @@ public class SignInController {
     public SellerService sellerService;
 
     public final List<Processor> processors = processorService.getAll();
-    public final List<Distributor> distributors = distributorService.getAll();
+    public final List<HoReCa> hoReCas = hoReCaService.getAll();
     public final List<Producer> producers = producerService.getAll();
     public final List<Seller> sellers = sellerService.getAll();
 */
@@ -53,6 +58,7 @@ public class SignInController {
 
         boolean connexionSuccessful = false;
         List<User> users = new ArrayList<>();
+        User rightUser = null;
 
         users.addAll(processors);
         users.addAll(producers);
@@ -61,15 +67,33 @@ public class SignInController {
         for (User user : users) {
             if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(password)) {
                 connexionSuccessful = true;
+                rightUser = user;
             }
         }
 
         if (connexionSuccessful) {
-            model.addAttribute("error", true);
-            //TODO creer la session
-            return "redirect:/signUpDistributor"; //TODO retourner la bonne page
+            HttpSession session = request.getSession();
+            switch (user.getClass().getSimpleName()) {
+                case "Seller":
+                    session.setAttribute("user", (Seller) rightUser);
+                    break;
+                case "Processor":
+                    session.setAttribute("user", (Processor) rightUser);
+                    break;
+                case "Producer":
+                   session.setAttribute("user", (Producer) rightUser);
+                    break;
+                case "HoReCa":
+                    session.setAttribute("user", (HoReCa) rightUser);
+                    break;
+                default:
+                    System.out.println("User type not recognized.");
+                    break;
+            }
+            return "redirect:/userHomePage";
         } else {
-            return "signUpDistributor";
+            model.addAttribute("error", true);
+            return "signUpHoReCa";
         }
     }
 

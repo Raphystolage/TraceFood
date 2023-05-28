@@ -4,57 +4,77 @@
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style2.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
 
 <body>
-<div class="w-layout-layout-column center-box wf-layout-layout">
+
+<header class="wf-layout-layout">
   <div class="w-layout-cell">
     <h1 class="tracefood">TRACEFOOD</h1>
+  </div>
+</header>
+
+<div class="w-layout-layout-column center-box wf-layout-layout">
+
 
     <div class="w-layout-cell cell-3 w-layout-layout-column">
 
-        <div class="w-layout-layout-column connection-fields">
+      <div class="wf-layout-layout">
+
+        <div class="w-layout-layout-column connection-fields informationBox">
           <div class="w-layout-column">
             <div class="w-layout-cell">
-              <p class="informationBox">Company name</p>
+              <p class="informationItem">Company name</p>
             </div>
+          </div>
+          <div class="w-layout-column">
             <div class="w-layout-cell">
-              <p class="informationBox">Company addess</p>
+              <p class="informationItem rightText">th:text="${session.companyName}</p>
             </div>
-            <div class="w-layout-cell">
-              <p class="informationBox">Type</p>
+          </div>
+        </div>
+
+        <div class="w-layout-layout-column connection-fields informationBox">
+          <div class="w-layout-column">
+            <div class="w-layout-cell informationItem">
+              <p class="">Company address</p>
             </div>
-            <div class="w-layout-cell">
-              <p class="informationBox">Email address</p>
+          </div>
+          <div class="w-layout-column">
+            <div class="w-layout-cell informationItem">
+              <p class="rightText">th:text="${session.companyAddress}</p>
             </div>
+          </div>
+        </div>
+
+        <div class="w-layout-layout-column connection-fields informationBox">
+          <div class="w-layout-column">
             <div class="w-layout-cell">
-              <p class="informationBox">Password</p>
+              <p class="informationItem">Password</p>
+            </div>
+          </div>
+          <div class="w-layout-column">
+            <div class="w-layout-cell">
+              <p class="informationItem rightText"> th:each="i : ${#numbers.sequence(1, pwdNumber)}" th:text="•"> </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-layout-layout-column connection-fields informationBox">
+          <div class="w-layout-column">
+            <div class="w-layout-cell informationItem">
+              <form id="deleteForm" action="/deleteAccount" method="DELETE">
+                <button type="submit" class="homeButton">Delete the account</button>
+              </form>
             </div>
           </div>
 
-          <div class="w-layout-column">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="rightText informationBox">Company name</p>
-              </div>
-              <div class="w-layout-cell">
-                <p class="rightText informationBox">Company addess</p>
-              </div>
-              <div class="w-layout-cell">
-                <p class="rightText informationBox">Type</p>
-              </div>
-              <div class="w-layout-cell">
-                <p class="rightText informationBox">Email address</p>
-              </div>
-              <div class="w-layout-cell">
-                <p class="rightText informationBox">Password</p>
-              </div>
-          </div>
-          </div>
         </div>
-    </div>
+
+        </div>
+
   </div>
 </div>
 </body>
