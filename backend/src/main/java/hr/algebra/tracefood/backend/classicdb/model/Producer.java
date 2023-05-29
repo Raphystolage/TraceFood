@@ -2,8 +2,6 @@ package hr.algebra.tracefood.backend.classicdb.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name="Producer")
 public class Producer {
@@ -11,19 +9,26 @@ public class Producer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
     @Enumerated(value = EnumType.STRING)
     private ProducerType type;
     private String address;
 
     public Producer() {}
-    public Producer(Long id, ProducerType type, String address) {
+    public Producer(Long id, User user, ProducerType type, String address) {
         this.id = id;
+        this.user = user;
         this.type = type;
         this.address = address;
     }
 
     public Long getId() {
         return id;
+    }
+    public User getUser() {
+        return user;
     }
     public ProducerType getType() {
         return type;
@@ -34,6 +39,9 @@ public class Producer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
     public void setType(ProducerType type) {
         this.type = type;

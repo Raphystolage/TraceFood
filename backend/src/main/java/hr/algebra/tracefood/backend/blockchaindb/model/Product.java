@@ -12,26 +12,25 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Optional<Product> parent;
+    @OneToOne
+    @JoinColumn(name = "parentId")
+    private Product parent;
     private String name;
     @Enumerated
     private ProductType type;
-    @OneToMany(mappedBy = "product")
-    private List<Certification> certifications;
 
     public Product() {}
-    public Product(Long id, Optional<Product> parent, String name, ProductType type, List<Certification> certifications) {
+    public Product(Long id, Product parent, String name, ProductType type) {
         this.id = id;
         this.parent = parent;
         this.name = name;
         this.type = type;
-        this.certifications = certifications;
     }
 
     public Long getId() {
         return id;
     }
-    public Optional<Product> getParent() {
+    public Product getParent() {
         return parent;
     }
     public String getName() {
@@ -39,9 +38,6 @@ public class Product {
     }
     public ProductType getType() {
         return type;
-    }
-    public List<Certification> getCertifications() {
-        return certifications;
     }
 
 }

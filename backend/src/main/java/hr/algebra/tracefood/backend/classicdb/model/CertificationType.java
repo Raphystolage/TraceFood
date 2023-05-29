@@ -15,7 +15,7 @@ public class CertificationType {
     private String name;
     private String description;
     @ManyToMany
-    @JoinTable(name = "CertificationTypeUser",
+    @JoinTable(name = "CertificationTypeGiveableByUser",
             joinColumns = @JoinColumn(name = "certificationTypeId"),
             inverseJoinColumns = @JoinColumn(name = "userId"))
     private List<User> giveableByUsers;

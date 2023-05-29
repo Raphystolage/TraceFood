@@ -18,20 +18,16 @@ public class Sell {
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;
-    @ManyToOne
-    @JoinColumn(name = "sellerId")
-    private User seller;
-    @ManyToOne
-    @JoinColumn(name = "buyerId")
-    private User buyer;
+    private Long sellerId;
+    private Long buyerId;
     private LocalDate date;
 
     public Sell() {}
-    public Sell(Long id, Operation operation, Product product, User seller, User buyer, LocalDate date) {
+    public Sell(Long id, Operation operation, Product product, Long sellerId, Long buyerId, LocalDate date) {
         this.operation = operation;
         this.product = product;
-        this.seller = seller;
-        this.buyer = buyer;
+        this.sellerId = sellerId;
+        this.buyerId = buyerId;
         this.date = date;
         this.id = id;
     }
@@ -42,11 +38,11 @@ public class Sell {
     public Product getProduct() {
         return product;
     }
-    public User getSeller() {
-        return seller;
+    public Long getSellerId() {
+        return sellerId;
     }
-    public User getBuyer() {
-        return buyer;
+    public Long getBuyerId() {
+        return buyerId;
     }
     public LocalDate getDate() {
         return date;

@@ -18,22 +18,18 @@ public class Transport {
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;
-    @ManyToOne
-    @JoinColumn(name = "senderId")
-    private User sender;
-    @ManyToOne
-    @JoinColumn(name = "receiverId")
-    private User receiver;
+    private Long senderId;
+    private Long receiverId;
     private LocalDate departureDate;
     private LocalDate arrivalDate;
 
     public Transport() {}
-    public Transport(Long id, Operation operation, Product product, User sender, User receiver, LocalDate departureDate, LocalDate arrivalDate) {
+    public Transport(Long id, Operation operation, Product product, Long senderId, Long receiverId, LocalDate departureDate, LocalDate arrivalDate) {
         this.id = id;
         this.operation = operation;
         this.product = product;
-        this.sender = sender;
-        this.receiver = receiver;
+        this.senderId = senderId;
+        this.receiverId = receiverId;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
     }
@@ -47,11 +43,11 @@ public class Transport {
     public Product getProduct() {
         return product;
     }
-    public User getSender() {
-        return sender;
+    public Long getSenderId() {
+        return senderId;
     }
-    public User getReceiver() {
-        return receiver;
+    public Long getReceiverId() {
+        return receiverId;
     }
     public LocalDate getDepartureDate() {
         return departureDate;

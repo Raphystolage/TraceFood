@@ -21,18 +21,16 @@ public class Processing {
     @ManyToOne
     @JoinColumn(name = "newProductId")
     private Product newProduct;
-    @ManyToOne
-    @JoinColumn(name = "processorId")
-    private Processor processor;
+    private Long processorId;
     private LocalDate date;
 
     public Processing() {}
-    public Processing(Long id, Operation operation, Product originProduct, Product newProduct, Processor processor, LocalDate date) {
+    public Processing(Long id, Operation operation, Product originProduct, Product newProduct, Long processorId, LocalDate date) {
         this.id = id;
         this.operation = operation;
         this.originProduct = originProduct;
         this.newProduct = newProduct;
-        this.processor = processor;
+        this.processorId = processorId;
         this.date = date;
     }
 
@@ -48,8 +46,8 @@ public class Processing {
     public Product getNewProduct() {
         return newProduct;
     }
-    public Processor getProcessor() {
-        return processor;
+    public Long getProcessorId() {
+        return processorId;
     }
     public LocalDate getDate() {
         return date;

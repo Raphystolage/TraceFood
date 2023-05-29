@@ -18,17 +18,15 @@ public class Production {
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product createdProduct;
-    @ManyToOne
-    @JoinColumn(name = "producerId")
-    private Producer producer;
+    private Long producerId;
     private LocalDate date;
 
     public Production() {}
-    public Production(Long id, Operation operation, Product createdProduct, Producer producer, LocalDate date) {
+    public Production(Long id, Operation operation, Product createdProduct, Long producerId, LocalDate date) {
         this.id = id;
         this.operation = operation;
         this.createdProduct = createdProduct;
-        this.producer = producer;
+        this.producerId = producerId;
         this.date = date;
     }
 
@@ -38,8 +36,8 @@ public class Production {
     public Product getCreatedProduct() {
         return createdProduct;
     }
-    public Producer getProducer() {
-        return producer;
+    public Long getProducerId() {
+        return producerId;
     }
     public LocalDate getDate() {
         return date;

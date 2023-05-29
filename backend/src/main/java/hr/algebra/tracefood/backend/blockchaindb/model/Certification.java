@@ -10,9 +10,7 @@ public class Certification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "certificationTypeId")
-    private CertificationType type;
+    private Long certificationTypeId;
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;
@@ -22,9 +20,9 @@ public class Certification {
     private int value;
 
     public Certification() {}
-    public Certification(Long id, CertificationType type, Product product, Operation addDuringOperation, int value) {
+    public Certification(Long id, Long certificationTypeId, Product product, Operation addDuringOperation, int value) {
         this.id = id;
-        this.type = type;
+        this.certificationTypeId = certificationTypeId;
         this.product = product;
         this.addDuringOperation = addDuringOperation;
         this.value = value;
@@ -33,8 +31,8 @@ public class Certification {
     public Long getId() {
         return id;
     }
-    public CertificationType getType() {
-        return type;
+    public Long getCertificationTypeId() {
+        return certificationTypeId;
     }
     public Product getProduct() {
         return product;
