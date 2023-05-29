@@ -18,10 +18,10 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 /*
     @Autowired
-    OperationService operationService;
+    private OperationService operationService;
 */
 
     @GetMapping("/informationAboutAProduct")

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style2.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
 
@@ -107,6 +107,7 @@
               <div class="w-layout-cell informationItem">
                 <p class="rightText">th:text="${sell.getDate()}</p>
               </div>
+              </p>
             </div>
           </div>
 
@@ -132,6 +133,7 @@
                 <p class="rightText">th:text="${processing.getDate()}</p>
               </div>
             </div>
+            </p>
           </div>
 
           <div th:case="Production">
@@ -151,6 +153,7 @@
                 <p class="rightText">th:text="${production.getDate()}</p>
               </div>
             </div>
+            </p>
           </div>
 
           <div th:case="Transport">
@@ -180,6 +183,7 @@
                 <p class="rightText">th:text="${production.getDArrival()}</p>
               </div>
             </div>
+            </p>
           </div>
 
           <div th:case="*">La valeur n'est pas prise en charge</div>
