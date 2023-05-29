@@ -29,6 +29,11 @@ public class ProductController {
         return "informationAboutAProduct";
     }
 
+    @GetMapping("/searchForAProduct")
+    public String searchForAProduct() {
+        return "searchForAProduct";
+    }
+
     @PostMapping("/informationAboutAProduct")
     public String searchForAProduct(Model model, @RequestParam("idProduct") Long idProduct) {
         /*
