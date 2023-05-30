@@ -4,16 +4,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> TRACEFOOD </title>
-		<link rel="stylesheet" type="text/css" href="style2.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 
 	<body>
 	<div id="w-node-1" class="w-layout-layout center-box wf-layout-layout">
 		<div id="w-node-2" class="w-layout-cell">
 			<h1 class="tracefood">TRACEFOOD</h1>
-		</div>
+
+		<div th:if="${error}" class="error-message">The email address or the password is wrong.</div>
+
+
 		<div id="w-node-3" class="w-layout-cell cell-3">
-			<form id="signInForm" action="/login" method="POST">
+			<form id="signInForm" action="/signIn" method="POST">
 				<div  class="w-layout-layout connection-fields wf-layout-layout">
 					<div  class="w-layout-cell cell-4">
 						<label for="emailAddress" class="sign-button">Email address</label>
@@ -36,7 +39,6 @@
 							<a th:href="@{/chooseUserType}" class="w-inline-block">
 								<div class="text-block">New on the website? Sign up here</div>
 							</a>
-							<div th:if="${error}" class="error-message">The email address or the password is wrong.</div>
 						</div>
 					</div>
 				</div>

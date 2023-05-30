@@ -1,7 +1,6 @@
 package hr.algebra.tracefood.webapp.controller;
 
 import hr.algebra.tracefood.webapp.model.*;
-
 import hr.algebra.tracefood.webapp.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -11,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,17 +30,8 @@ public class SignController {
     @Autowired
     public SellerService sellerService;
 
-    public final List<Processor> processors = processorService.getAll();
-    public final List<HoReCa> hoReCas = hoReCaService.getAll();
-    public final List<Producer> producers = producerService.getAll();
-    public final List<Seller> sellers = sellerService.getAll();
-*/
-
     @GetMapping("/signIn")
     public String signIn(Model model) {
-
-        model.addAttribute("error", false);
-
         return "signIn";
     }
 
@@ -79,6 +67,7 @@ public class SignController {
                                     @RequestParam("emailAddress") String emailAddress,
                                     @RequestParam("password") String password, Model model) {
 
+        List<Seller> sellers = sellerService.getAll();
         boolean signUpSuccessful = true;
 
         for (Seller seller : sellers) {
@@ -90,7 +79,7 @@ public class SignController {
         if (signUpSuccessful) {
             HttpSession session = request.getSession();
             User newUser = new User(emailAddress, password, companyName, companyAddress);
-            Seller newSeller = new Seller(newUser, type;
+            Seller newSeller = new Seller(newUser, type);
             sellerService.create(newSeller);
             session.setAttribute("user", newSeller);
 
@@ -98,7 +87,6 @@ public class SignController {
 
         } else {
             model.addAttribute("error", true);
-
             return "signUpProcessor";
         }
 
@@ -111,6 +99,7 @@ public class SignController {
                                     @RequestParam("emailAddress") String emailAddress,
                                     @RequestParam("password") String password, Model model) {
 
+        List<Processor> processors = processorService.getAll();
         boolean signUpSuccessful = true;
 
         for (Processor processor: processors) {
@@ -143,6 +132,7 @@ public class SignController {
                                     @RequestParam("emailAddress") String emailAddress,
                                     @RequestParam("password") String password, Model model) {
 
+        List<Producer> producers = producerService.getAll();
         boolean signUpSuccessful = true;
 
         for (Producer producer: producers) {
@@ -173,9 +163,10 @@ public class SignController {
                                     @RequestParam("emailAddress") String emailAddress,
                                     @RequestParam("companyAddress") String companyAddress,
                                     @RequestParam("password") String password,
-                                   @RequestParam("type") HoReCaType type,
+                                   @RequestParam("type") String type,
                                    Model model) {
 
+        List<HoReCa> hoReCas = hoReCaService.getAll();
         boolean signUpSuccessful = true;
 
         for (HoReCa hoReCa: hoReCas) {
@@ -185,9 +176,10 @@ public class SignController {
 
         }
         if (signUpSuccessful) {
+            UserService userService = new UserService();
             HttpSession session = request.getSession();
-            User newUser = new User(emailAddress, password, companyName, companyAddress);
-            HoReCa newHoReCa = new HoReCa(newUser, type) ;
+            User newUser = userService.create(new User(emailAddress, password, companyName, companyAddress));
+            HoReCa newHoReCa = new HoReCa(newUser, HoReCaType.valueOf(type)) ;
             hoReCaService.create(newHoReCa);
             session.setAttribute("user", newHoReCa);
 
@@ -202,7 +194,7 @@ public class SignController {
 
 
 
-    @PostMapping("/login")
+    @PostMapping("/signIn")
     public String SignIn(@RequestParam("emailAddress") String emailAddress, @RequestParam("password") String password, Model model) {
 
         boolean connexionSuccessful = false;
@@ -240,8 +232,7 @@ public class SignController {
             return "redirect:/userHomePage";
         } else {
             model.addAttribute("error", true);
-
-            return "signUpHoReCa";
+            return "signIn";
         }
     }
 

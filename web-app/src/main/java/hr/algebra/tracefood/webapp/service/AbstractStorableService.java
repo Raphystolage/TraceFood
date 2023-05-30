@@ -20,9 +20,10 @@ public class AbstractStorableService<T> {
         this.responseType = responseType;
     }
 
-    public void create(T newStorable) {
+    public T create(T newStorable) {
         HttpEntity<T> request = new HttpEntity<>(newStorable);
         ResponseEntity<T> response = restTemplate.exchange(this.url, HttpMethod.POST, request, responseType);
+        return response.getBody();
     }
 
         public T getById(Long id) {

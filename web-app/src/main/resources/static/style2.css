@@ -254,9 +254,10 @@
     text-decoration: none;
 }
 
-.error-message {
-    color: red;
-    display: none;
+.error-message{
+    color: #aa063f;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* User home page*/

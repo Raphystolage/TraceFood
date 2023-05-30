@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style2.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
 
@@ -12,6 +12,8 @@
 <div class="w-layout-layout-column center-box wf-layout-layout">
   <div class="w-layout-cell">
     <h1 class="tracefood">TRACEFOOD</h1>
+
+    <div th:if="${error}" class="error-message">This email address is already used.</div>
 
     <div class="w-layout-cell cell-3 w-layout-layout-column">
       <form class="signUpForm" action="/signUpHoReCa" method="POST">
@@ -44,7 +46,7 @@
 
               <select id="type" name="type" class="sign-in-field" required>
                 <option th:each="hoReCa : ${T(hr.algebra.tracefood.webapp.model.HoReCaType).values()}"
-                        th:value="${hoReCa}" th:text="${hoReCa.toString()}"></option>
+                        th:value="${hoReCa.name()}" th:text="${hoReCa.toString()}"></option>
               </select>
 
             </div>
@@ -61,7 +63,6 @@
             <div class="w-layout-cell cell-9">
               <button type="submit" class="clickableButton sign-in">Sign up</button>
             </div>
-            <div th:if="${error}" class="error-message">This email address is already used.</div>
           </div>
         </div>
       </form>

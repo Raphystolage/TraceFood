@@ -13,6 +13,8 @@
     <div class="w-layout-cell">
         <h1 class="tracefood">TRACEFOOD</h1>
 
+        <div th:if="${error}" class="error-message">This email address is already used.</div>
+
         <div class="w-layout-cell cell-3 w-layout-layout-column">
             <form class="signUpForm" action="/signUpProcessor" method="POST">
                 <div class="w-layout-layout-column connection-fields">
@@ -61,7 +63,6 @@
                         <div class="w-layout-cell cell-9">
                             <button type="submit" class="clickableButton sign-in">Sign up</button>
                         </div>
-                        <div th:if="${error}" class="error-message">This email address is already used.</div>
                     </div>
                 </div>
             </form>

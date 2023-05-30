@@ -1,9 +1,6 @@
 package hr.algebra.tracefood.webapp.service;
 
-import hr.algebra.tracefood.webapp.model.Processor;
-import hr.algebra.tracefood.webapp.model.Producer;
-import hr.algebra.tracefood.webapp.model.Seller;
-import hr.algebra.tracefood.webapp.model.User;
+import hr.algebra.tracefood.webapp.model.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -44,6 +41,17 @@ public class UserService extends AbstractClassicDBStorableService<User> {
         for(Seller seller : sellers) {
             if(seller.getUser().getId().equals(id)) {
                 return seller;
+            }
+        }
+        return null;
+    }
+
+    public HoReCa getHoReCaByUserId(Long id) {
+        HoReCaService hoReCaService = new HoReCaService();
+        List<HoReCa> sellers = hoReCaService.getAll();
+        for(HoReCa hoReCa : sellers) {
+            if(hoReCa.getUser().getId().equals(id)) {
+                return hoReCa;
             }
         }
         return null;
