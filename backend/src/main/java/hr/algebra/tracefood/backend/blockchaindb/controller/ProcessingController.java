@@ -23,5 +23,9 @@ public class ProcessingController extends AbstractBlockchainDBStorableController
     public List<Processing> getByProductId(@RequestParam("originProductId") Long originProductId) {
         return ((ProcessingService) service).getByOriginProductId(originProductId);
     }
+    @GetMapping(params = "processorId")
+    public List<Processing> getByProcessorId(@RequestParam("processorId") Long processorId) {
+        return ((ProcessingService) service).getByProcessorId(processorId);
+    }
 
 }

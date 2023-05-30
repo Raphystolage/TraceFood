@@ -49,11 +49,11 @@ public class MainTest {
         UserService userService = new UserService();
         ProductService productService = new ProductService();
         OperationService operationService = new OperationService();
-        TransportService transportService = new TransportService();
+        ProcessingService processingService = new ProcessingService();
 
-        List<Transport> transports = transportService.getByProductId(1L);
-        for(Transport transport : transports) {
-            System.out.println(transport.getDepartureDate()+transport.getArrivalDate().toString());
+        List<Processing> processings = processingService.getByProcessorId(1L);
+        for(Processing processing : processings) {
+            System.out.println(processing.getDate());
         }
 
     }
