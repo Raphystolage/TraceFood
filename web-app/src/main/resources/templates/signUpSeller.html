@@ -42,9 +42,9 @@
             </div>
             <div class="w-layout-cell cell-5">
 
-              <select id="type" name="type" class="sign-in-field " required>
-                <option value="retailer">Retailer</option>
-                <option value="wholesale">Wholesale</option>
+              <select id="type" name="type" class="sign-in-field" required>
+                <option th:each="seller : ${T(hr.algebra.tracefood.webapp.model.SellerType).values()}"
+                        th:value="${seller}" th:text="${seller.toString()}"></option>
               </select>
 
             </div>

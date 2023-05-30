@@ -42,17 +42,9 @@
                         </div>
                         <div class="w-layout-cell cell-5">
 
-                            <select id="type" name="type" class="sign-in-field " required>
-                                <option value="flourMiller">Flour miller</option>
-                                <option value="meatProcessor">Meat processor</option>
-                                <option value="dairyProcessor">Dairy processor</option>
-                                <option value="fishProcessor">Fish processor</option>
-                                <option value="fruitAndVegetableProcessor">Fruit and vegetable processor</option>
-                                <option value="coffeeProcessor">Coffee processor</option>
-                                <option value="snackFoodProcessor">Snack food processor</option>
-                                <option value="beverageProcessor">Beverage processor</option>
-                                <option value="bakeryProcessor">Bakery processor</option>
-                                <option value="confectioneryProcessor">Confectionery processor</option>
+                            <select id="type" name="type" class="sign-in-field" required>
+                                <option th:each="processor : ${T(hr.algebra.tracefood.webapp.model.ProcessorType).values()}"
+                                        th:value="${processor}" th:text="${processor.toString()}"></option>
                             </select>
 
                         </div>

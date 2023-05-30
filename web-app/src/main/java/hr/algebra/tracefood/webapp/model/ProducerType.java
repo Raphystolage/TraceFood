@@ -2,13 +2,23 @@ package hr.algebra.tracefood.webapp.model;
 
 public enum ProducerType {
 
-    FARMER,
-    RANCHER,
-    FISHERMAN,
-    DAIRYFARMER,
-    VITICULTURIST,
-    BEEKEEPER,
-    COFFEEGROWER,
-    HERBANDSPICEFARMER
+    FARMER("Farmer"),
+    RANCHER("Rancher"),
+    FISHERMAN("Fisherman"),
+    DAIRYFARMER("Dairy Farmer"),
+    VITICULTURIST("Viticulturist"),
+    BEEKEEPER("Beekeeper"),
+    COFFEEGROWER("Coffee Grower"),
+    HERBANDSPICEFARMER("Herb and Spice Farmer");
 
+    private final String displayName;
+
+    private ProducerType(String displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
+    public String toString() {
+        return displayName;
+    }
 }

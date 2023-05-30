@@ -19,6 +19,7 @@ public class OperationController {
     @GetMapping("/addAnOperation")
 
     public String addAnOperation() {
+        /*
         HttpSession session = request.getSession();
         CertificationType certificationType = new CertificationType(1L, "Bio", "Bio");
         CertificationType certificationType2 = new CertificationType(1L, "Bio2", "Bio bis");
@@ -26,7 +27,7 @@ public class OperationController {
         certifs.add(certificationType);
         certifs.add(certificationType);
         User user = new Producer(1L, "companyAdress", "companyName", "password", certifs, "");
-        session.setAttribute();
+        session.setAttribute();*/
         return "addAnOperation";
     }
 

@@ -42,11 +42,9 @@
             </div>
             <div class="w-layout-cell cell-5">
 
-              <select id="type" name="type" class="sign-in-field " required>
-                <option value="hotel">Hotel</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="cafe">Cafe</option>
-
+              <select id="type" name="type" class="sign-in-field" required>
+                <option th:each="hoReCa : ${T(hr.algebra.tracefood.webapp.model.HoReCaType).values()}"
+                        th:value="${hoReCa}" th:text="${hoReCa.toString()}"></option>
               </select>
 
             </div>
