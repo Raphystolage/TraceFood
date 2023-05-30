@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style2.css" />
 
 </head>
 
@@ -27,9 +27,6 @@
               <p class="sign-button">Type</p>
             </div>
             <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Certifications</p>
-            </div>
-            <div class="w-layout-cell cell-5">
               <p class="sign-button">Email address</p>
             </div>
             <div class="w-layout-cell cell-5">
@@ -45,27 +42,24 @@
             </div>
             <div class="w-layout-cell cell-5">
 
-              <select id="type" name="type" class="sign-in-field" required>
+              <select id="type" name="type" class="sign-in-field " required>
                 <option value="retailer">Retailer</option>
-                <option value="wholesaler">Wholesaler</option>
+                <option value="wholesale">Wholesale</option>
               </select>
 
-            </div>
-            <div class="w-layout-cell cell-5">
-              <input name="certifications" class="sign-in-field" type="text"/>
             </div>
             <div class="w-layout-cell cell-5">
               <input name="emailAddress" class="sign-in-field" placeholder="name@example.com" type="email" required/>
             </div>
             <div class="w-layout-cell cell-5">
-              <input name="password" class="sign-in-field" type="password" />
+              <input name="password" class="sign-in-field" type="password" required/>
             </div>
           </div>
         </div>
         <div class="w-layout-cell cell-2">
           <div class="w-layout-layout sign-in wf-layout-layout">
             <div class="w-layout-cell cell-9">
-              <button type="submit" class="sign-button sign-submit clickableButton">Sign up</button>
+              <button type="submit" class="clickableButton sign-in">Sign up</button>
             </div>
             <div th:if="${error}" class="error-message">This email address is already used.</div>
           </div>

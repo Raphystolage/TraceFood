@@ -1,29 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+<html style="font-family: Arial;">
 
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style2.css" />
 
 </head>
 
 <body>
 
-<header class="wf-layout-layout">
-  <div class="w-layout-cell">
-    <h1 class="tracefood">TRACEFOOD</h1>
-  </div>
-</header>
+<div th:replace="~{header :: header}"></div>
 
-<div class="menu">
-  <ul>
-    <li><a th:href="@{/accountInformation}">Account information</a></li>
-    <li><a th:href="@{/searchForAProduct}">Information about a product</a></li>
-    <li><a th:href="@{/addAProduct}">Add a product</a></li>
-    <li><a th:href="@{/history}">History</a></li>
-  </ul>
-</div>
+<div th:replace="~{menu :: menu}"></div>
 
 <div class="w-layout-layout-column center-box-user wf-layout-layout">
 
@@ -34,7 +23,7 @@
       <div id="w-node-2" class="w-layout-cell">
         <form id="searchForm" action="/informationAboutAProduct" method="POST">
           <span>Identification number :
-            <input name="idProduct" class="sign-in-field"/>
+            <input name="productId" class="sign-in-field"/>
           </span>
           <button type="submit" class="search-button clickableButton">Search</button>
         </form>

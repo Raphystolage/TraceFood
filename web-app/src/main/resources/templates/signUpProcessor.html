@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TRACEFOOD</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style2.css" />
 
 </head>
 
@@ -14,7 +14,7 @@
         <h1 class="tracefood">TRACEFOOD</h1>
 
         <div class="w-layout-cell cell-3 w-layout-layout-column">
-            <form class="signUpForm" action="/signUpProcessorProcessor" method="POST">
+            <form class="signUpForm" action="/signUpProcessor" method="POST">
                 <div class="w-layout-layout-column connection-fields">
                     <div class="w-layout-column">
                         <div class="w-layout-cell cell-5">
@@ -25,9 +25,6 @@
                         </div>
                         <div class="w-layout-cell cell-5">
                             <p class="sign-button">Type</p>
-                        </div>
-                        <div class="w-layout-cell cell-5">
-                            <p class="sign-button ">Certifications</p>
                         </div>
                         <div class="w-layout-cell cell-5">
                             <p class="sign-button">Email address</p>
@@ -60,9 +57,6 @@
 
                         </div>
                         <div class="w-layout-cell cell-5">
-                            <input name="certifications" class="sign-in-field" type="text"/>
-                        </div>
-                        <div class="w-layout-cell cell-5">
                             <input name="emailAddress" class="sign-in-field" placeholder="name@example.com" type="email" required/>
                         </div>
                         <div class="w-layout-cell cell-5">
@@ -73,7 +67,7 @@
                 <div class="w-layout-cell cell-2">
                     <div class="w-layout-layout sign-in wf-layout-layout">
                         <div class="w-layout-cell cell-9">
-                            <button type="submit" class="sign-button clickableButton sign-submit">Sign up</button>
+                            <button type="submit" class="clickableButton sign-in">Sign up</button>
                         </div>
                         <div th:if="${error}" class="error-message">This email address is already used.</div>
                     </div>

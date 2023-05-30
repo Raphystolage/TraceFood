@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style2.css" />
+
 </head>
+
 <body>
-<div id="w-node-signIn1" class="w-layout-layout-column center-box wf-layout-layout">
-  <div id="w-node-signIn2" class="w-layout-cell">
+<div class="w-layout-layout-column center-box wf-layout-layout">
+  <div class="w-layout-cell">
     <h1 class="tracefood">TRACEFOOD</h1>
 
-    <div class="w-layout-cell cell-3">
-      <form id="signUpForm" action="/signUpHoReCa" method="POST">
+    <div class="w-layout-cell cell-3 w-layout-layout-column">
+      <form class="signUpForm" action="/signUpHoReCa" method="POST">
         <div class="w-layout-layout-column connection-fields">
           <div class="w-layout-column">
             <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Company name</p>
+              <p class="sign-button">Company name</p>
             </div>
             <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Company addess</p>
+              <p class="sign-button">Company addess</p>
             </div>
             <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Type</p>
+              <p class="sign-button">Type</p>
             </div>
             <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Certifications</p>
+              <p class="sign-button">Email address</p>
             </div>
             <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Email address</p>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <p class="sign-button ">Password</p>
+              <p class="sign-button">Password</p>
             </div>
           </div>
           <div class="w-layout-column">
@@ -42,15 +42,13 @@
             </div>
             <div class="w-layout-cell cell-5">
 
-              <select id="type" name="type" class="sign-in-field" required>
+              <select id="type" name="type" class="sign-in-field " required>
                 <option value="hotel">Hotel</option>
                 <option value="restaurant">Restaurant</option>
                 <option value="cafe">Cafe</option>
-              </select>
-            </div>
 
-            <div class="w-layout-cell cell-5">
-              <input name="certifications" class="sign-in-field" type="text"/>
+              </select>
+
             </div>
             <div class="w-layout-cell cell-5">
               <input name="emailAddress" class="sign-in-field" placeholder="name@example.com" type="email" required/>
@@ -60,18 +58,18 @@
             </div>
           </div>
         </div>
-      </form>
-    </div>
-
-    <div class="w-layout-cell cell-2">
-      <div class="w-layout-layout sign-in wf-layout-layout">
-        <div class="w-layout-cell cell-9">
-          <button type="submit" class="sign-button sign-submit clickableButton">Sign up</button>
+        <div class="w-layout-cell cell-2">
+          <div class="w-layout-layout sign-in wf-layout-layout">
+            <div class="w-layout-cell cell-9">
+              <button type="submit" class="clickableButton sign-in">Sign up</button>
+            </div>
+            <div th:if="${error}" class="error-message">This email address is already used.</div>
+          </div>
         </div>
-        <div th:if="${error}" class="error-message">This email address is already used.</div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
 </body>
+
 </html>

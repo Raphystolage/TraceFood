@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> TRACEFOOD </title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="style2.css" />
 	</head>
 
 	<body>
@@ -16,10 +16,10 @@
 			<form id="signInForm" action="/login" method="POST">
 				<div  class="w-layout-layout connection-fields wf-layout-layout">
 					<div  class="w-layout-cell cell-4">
-						<label for="emailAddress" class="sign-button   ">Email address</label>
+						<label for="emailAddress" class="sign-button">Email address</label>
 					</div>
 					<div class="w-layout-cell cell-5">
-						<input id="emailAddress" name="emailAddress" class="sign-in-field   " type="email" placeholder="name@example.com" required />
+						<input id="emailAddress" name="emailAddress" class="sign-in-field" type="email" placeholder="name@example.com" required />
 					</div>
 					<div class="w-layout-cell cell-5">
 						<label for="password" class="sign-button 
@@ -32,7 +32,7 @@
 				<div id="w-node-10" class="w-layout-cell cell-2">
 					<div id="w-node-11" class="w-layout-layout sign-in wf-layout-layout">
 						<div id="w-node-12" class="w-layout-cell cell-9">
-							<button type="submit" class="sign-submit sign-button clickableButton ">Sign in</button>
+							<button type="submit" class="sign-in clickableButton ">Sign in</button>
 							<a th:href="@{/chooseUserType}" class="w-inline-block">
 								<div class="text-block">New on the website? Sign up here</div>
 							</a>

@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SignUpController {
+public class SignController {
 
-
+/*
     @Autowired
     private HttpServletRequest request;
 
@@ -40,11 +40,13 @@ public class SignUpController {
     public final List<HoReCa> hoReCas = hoReCaService.getAll();
     public final List<Producer> producers = producerService.getAll();
     public final List<Seller> sellers = sellerService.getAll();
-
+*/
 
     @GetMapping("/signIn")
     public String signIn(Model model) {
+
         model.addAttribute("error", false);
+
         return "signIn";
     }
 
@@ -72,7 +74,7 @@ public class SignUpController {
     public String signUpSeller() {
         return "signUpSeller";
     }
-
+/*
     @PostMapping("/signUpSeller")
     public String SignUpProcessorForm(@RequestParam("companyName") String companyName,
                                     @RequestParam("companyAddress") String companyAddress,
@@ -95,16 +97,18 @@ public class SignUpController {
             Seller newSeller = new Seller(newUser, type;
             sellerService.create(newSeller);
             session.setAttribute("user", newSeller);
+
             return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
+
             return "signUpProcessor";
-        }
 
     }
 
     @PostMapping("/signUpProcessor")
+
     public String SignUpProcessorForm(@RequestParam("companyName") String companyName,
                                     @RequestParam("companyAddress") String companyAddress,
                                     @RequestParam("type") String type, //TODO changer le type en enum
@@ -126,10 +130,12 @@ public class SignUpController {
             Processor newProcessor = new Processor(newUser, type);
             processorService.create(newProcessor);
             session.setAttribute("user", newProcessor);
+
             return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
+
             return "signUpProcessor";
         }
 
@@ -157,10 +163,12 @@ public class SignUpController {
             Producer newProducer = new Producer(newUser, type);
             producerService.create(newProducer);
             session.setAttribute("user", newProducer);
+
             return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
+
             return "signUpProducer";
         }
 
@@ -189,11 +197,14 @@ public class SignUpController {
             HoReCa newHoReCa = new HoReCa(newUser, type) ;
             hoReCaService.create(newHoReCa);
             session.setAttribute("user", newProducer);
+
             return "redirect:/userHomePage";
         } else {
             model.addAttribute("error", true);
+
             return "signUpHoReCa";
         }
+
     }
 
 
@@ -218,30 +229,32 @@ public class SignUpController {
 
         if (connexionSuccessful) {
             HttpSession session = request.getSession();
+            UserService userService = new UserService();
             switch (user.getClass().getSimpleName()) {
                 case "Seller":
-                    session.setAttribute("user", (Seller) rightUser);
+                    session.setAttribute("user", userService.getSellerByUserId(rightUser.getId()));
                     break;
                 case "Processor":
-                    session.setAttribute("user", (Processor) rightUser);
+                    session.setAttribute("user", userService.getProcessorByUserId(rightUser.getId()));
                     break;
                 case "Producer":
-                   session.setAttribute("user", (Producer) rightUser);
+                   session.setAttribute("user", userService.getProducerByUserId(rightUser.getId()));
                     break;
                 case "HoReCa":
-                    session.setAttribute("user", (HoReCa) rightUser);
+                    session.setAttribute("user", userService.getHoReCaByUserId(rightUser.getId());
                     break;
                 default:
                     System.out.println("User type not recognized.");
                     break;
             }
+
             return "redirect:/userHomePage";
         } else {
             model.addAttribute("error", true);
+
             return "signUpHoReCa";
         }
     }
-
-
+*/
 
 }

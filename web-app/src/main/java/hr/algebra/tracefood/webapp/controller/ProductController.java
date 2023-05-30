@@ -1,9 +1,7 @@
 package hr.algebra.tracefood.webapp.controller;
 
-import hr.algebra.tracefood.webapp.model.Certification;
-import hr.algebra.tracefood.webapp.model.Operation;
-import hr.algebra.tracefood.webapp.model.Product;
-import hr.algebra.tracefood.webapp.service.ProductService;
+import hr.algebra.tracefood.webapp.model.*;
+import hr.algebra.tracefood.webapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +17,6 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-/*
-    @Autowired
-    private OperationService operationService;
-*/
 
     @GetMapping("/informationAboutAProduct")
     public String informationAboutAProduct() {
@@ -34,17 +28,34 @@ public class ProductController {
         return "searchForAProduct";
     }
 
+    /*
     @PostMapping("/informationAboutAProduct")
-    public String searchForAProduct(Model model, @RequestParam("idProduct") Long idProduct) {
-        /*
-        Product product = productService.getById(idProduct);
-        List<Operation> operations = new ArrayList<>();
-        while(product.getParent().isPresent()) {
-            operations.addAll(operationService.getByProductId(idProduct));
-            product = product.getParent();
-        };
+    public String searchForAProduct(Model model, @RequestParam("productId") Long productId) {
 
-         */
+        Product product = productService.getById(productId);
+
+        ProductionService productionService = new ProductionService();
+        ProcessingService processingService = new ProcessingService();
+        TransportService transportService = new TransportService();
+
+        List<Product> productions = new ArrayList<>();
+        List<Processing> process = new ArrayList<>();
+        List<Transport> transports = new ArrayList<>();
+
+
+        while(product.getParent().isPresent()) {
+            productions.addAll(productionService.getAllByCreatedProductId(productId));
+            process.addAll(processingService.getAllByOriginProductId(productId));
+            transports.addAll(transportService.getAllByProductId(productId));
+            product = product.getParent();
+        }
+
+        model.addAttribute("productions", productions);
+        model.addAttribute("process", process);
+        model.addAttribute("transports", transports);
+
         return "informationAboutAProduct";
     }
+
+     */
 }
