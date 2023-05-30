@@ -14,14 +14,12 @@ public class Seller {
     private User user;
     @Enumerated(value = EnumType.STRING)
     private SellerType type;
-    private String address;
 
     public Seller() {}
-    public Seller(Long id, User user, SellerType type, String address) {
+    public Seller(Long id, User user, SellerType type) {
         this.id = id;
         this.user = user;
         this.type = type;
-        this.address = address;
     }
 
     public Long getId() {
@@ -33,9 +31,6 @@ public class Seller {
     public SellerType getType() {
         return type;
     }
-    public String getAddress() {
-        return address;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -46,8 +41,5 @@ public class Seller {
     public void setType(SellerType type) {
         this.type = type;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    
+
 }

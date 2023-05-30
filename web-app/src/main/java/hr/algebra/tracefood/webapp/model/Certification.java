@@ -1,32 +1,37 @@
 package hr.algebra.tracefood.webapp.model;
 
-import java.util.Optional;
+import hr.algebra.tracefood.webapp.service.CertificationTypeService;
 
 public class Certification {
 
     private Long id;
-    private CertificationType type;
+    private Long certificationTypeId;
     private Product product;
-    private Optional<Integer> value;
+    private Operation addDuringOperation;
+    private Integer value;
 
     public Certification() {}
-    public Certification(Long id, CertificationType type, Product product, Optional<Integer> value) {
-        this.id = id;
-        this.type = type;
+    public Certification(CertificationType certificationType, Product product, Operation addDuringOperation, Integer value) {
+        this.id = null;
+        this.certificationTypeId = certificationType.getId();
         this.product = product;
+        this.addDuringOperation = addDuringOperation;
         this.value = value;
     }
 
     public Long getId() {
         return id;
     }
-    public CertificationType getType() {
-        return type;
+    public CertificationType getCertificationType() {
+        return (new CertificationTypeService()).getById(certificationTypeId);
     }
     public Product getProduct() {
         return product;
     }
-    public Optional<Integer> getValue() {
+    public Operation getAddDuringOperation() {
+        return addDuringOperation;
+    }
+    public Integer getValue() {
         return value;
     }
 

@@ -1,31 +1,43 @@
 package hr.algebra.tracefood.webapp.model;
 
+import hr.algebra.tracefood.webapp.service.ProducerService;
+
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
-public class Production extends Operation {
+public class Production {
 
+    private Long id;
+    private Operation operation;
     private Product createdProduct;
-    private Producer producer;
+    private Long producerId;
     private LocalDate date;
 
     public Production() {}
-    public Production(Long id, String description, List<Certification> addedCertifications, Product createdProduct, Producer producer, LocalDate date) {
-        super(id, description, addedCertifications);
+    public Production(Operation operation, Product createdProduct, Producer producer, LocalDate date) {
+        this.id = null;
+        this.operation = operation;
         this.createdProduct = createdProduct;
-        this.producer = producer;
+        this.producerId = 1L;
         this.date = date;
     }
 
+    public Long getId() {
+        return id;
+    }
     public Product getCreatedProduct() {
         return createdProduct;
     }
     public Producer getProducer() {
-        return producer;
+        return (new ProducerService()).getById(producerId);
+    }
+    public Long getProducerId() {
+        return producerId;
     }
     public LocalDate getDate() {
         return date;
+    }
+    public Operation getOperation() {
+        return operation;
     }
     
 }

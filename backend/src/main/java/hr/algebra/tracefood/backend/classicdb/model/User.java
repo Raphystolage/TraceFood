@@ -12,13 +12,15 @@ public class User {
     private String emailAddress;
     private String password;
     private String companyName;
+    private String address;
 
     public User() {}
-    public User(Long id, String emailAddress, String password, String companyName) {
+    public User(Long id, String emailAddress, String password, String companyName, String address) {
         this.id = id;
         this.emailAddress = emailAddress;
         this.password = password;
         this.companyName = companyName;
+        this.address = address;
     }
 
     public Long getId() {
@@ -34,6 +36,10 @@ public class User {
         return companyName;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -47,4 +53,7 @@ public class User {
         this.companyName = companyName;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

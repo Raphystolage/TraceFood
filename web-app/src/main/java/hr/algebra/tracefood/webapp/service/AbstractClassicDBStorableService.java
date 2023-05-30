@@ -12,13 +12,11 @@ public class AbstractClassicDBStorableService<T> extends AbstractStorableService
     }
 
     public void update(T updatedClassicDBStorable) {
-        RestTemplate restTemplate = new RestTemplate();
         HttpEntity<T> request = new HttpEntity<>(updatedClassicDBStorable);
         ResponseEntity<T> response = restTemplate.exchange(this.url, HttpMethod.PUT, request, this.responseType);
     }
 
     public void deleteById(Long id) {
-        RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(this.url+"/"+id);
     }
     

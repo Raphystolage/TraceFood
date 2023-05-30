@@ -1,24 +1,34 @@
 package hr.algebra.tracefood.webapp.model;
 
+import hr.algebra.tracefood.webapp.service.ProcessorService;
+
 import java.time.LocalDate;
-import java.util.List;
 
-public class Processing extends Operation {
+public class Processing {
 
+    private Long id;
+    private Operation operation;
     private Product originProduct;
     private Product newProduct;
-    private Processor processor;
+    private Long processorId;
     private LocalDate date;
 
     public Processing() {}
-    public Processing(Long id, String description, List<Certification> addedCertifications, Product originProduct, Product newProduct, Processor processor, LocalDate date) {
-        super(id, description, addedCertifications);
+    public Processing(Operation operation, Product originProduct, Product newProduct, Processor processor, LocalDate date) {
+        this.id = null;
+        this.operation = operation;
         this.originProduct = originProduct;
         this.newProduct = newProduct;
-        this.processor = processor;
+        this.processorId = processor.getId();
         this.date = date;
     }
 
+    public Long getId() {
+        return id;
+    }
+    public Operation getOperation() {
+        return operation;
+    }
     public Product getOriginProduct() {
         return originProduct;
     }
@@ -26,7 +36,10 @@ public class Processing extends Operation {
         return newProduct;
     }
     public Processor getProcessor() {
-        return processor;
+        return (new ProcessorService()).getById(processorId);
+    }
+    public Long getProcessorId() {
+        return processorId;
     }
     public LocalDate getDate() {
         return date;

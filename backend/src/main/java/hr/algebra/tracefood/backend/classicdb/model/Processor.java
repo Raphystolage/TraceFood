@@ -14,14 +14,12 @@ public class Processor {
     private User user;
     @Enumerated(value = EnumType.STRING)
     private ProcessorType type;
-    private String address;
 
     public Processor() {}
-    public Processor(Long id, User user, ProcessorType type, String address) {
+    public Processor(Long id, User user, ProcessorType type) {
         this.id = id;
         this.user = user;
         this.type = type;
-        this.address = address;
     }
 
     public Long getId() {
@@ -33,9 +31,6 @@ public class Processor {
     public ProcessorType getType() {
         return type;
     }
-    public String getAddress() {
-        return address;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -45,9 +40,6 @@ public class Processor {
     }
     public void setType(ProcessorType type) {
         this.type = type;
-    }
-    public void setAddress(String address) {
-        this.address = address;
     }
 
 }

@@ -1,39 +1,51 @@
 package hr.algebra.tracefood.webapp.model;
 
+import hr.algebra.tracefood.webapp.service.SellerService;
+import hr.algebra.tracefood.webapp.service.UserService;
+
 import java.time.LocalDate;
-import java.util.List;
 
-public class Transport extends Operation {
+public class Transport {
 
+    private Long id;
+    private Operation operation;
     private Product product;
-    private Distributor distributor;
-    private User sender;
-    private User receiver;
+    private Long senderId;
+    private Long receiverId;
     private LocalDate departureDate;
     private LocalDate arrivalDate;
 
     public Transport() {}
-    public Transport(Long id, String description, List<Certification> addedCertifications, Product product, Distributor distributor, User sender, User receiver, LocalDate departureDate, LocalDate arrivalDate) {
-        super(id, description, addedCertifications);
+    public Transport(Operation operation, Product product, User sender, User receiver, LocalDate departureDate, LocalDate arrivalDate) {
+        this.id = null;
+        this.operation = operation;
         this.product = product;
-        this.distributor = distributor;
-        this.sender = sender;
-        this.receiver = receiver;
+        this.senderId = sender.getId();
+        this.receiverId = receiver.getId();
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
     }
 
+    public Long getId() {
+        return id;
+    }
+    public Operation getOperation() {
+        return operation;
+    }
     public Product getProduct() {
         return product;
     }
-    public Distributor getDistributor() {
-        return distributor;
+    public Long getSenderId() {
+        return senderId;
     }
     public User getSender() {
-        return sender;
+        return (new UserService()).getById(senderId);
+    }
+    public Long getReceiverId() {
+        return receiverId;
     }
     public User getReceiver() {
-        return receiver;
+        return (new UserService()).getById(receiverId);
     }
     public LocalDate getDepartureDate() {
         return departureDate;

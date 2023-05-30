@@ -16,7 +16,7 @@ public class Production {
     @JoinColumn(name = "operationId")
     private Operation operation;
     @ManyToOne
-    @JoinColumn(name = "productId")
+    @JoinColumn(name = "createdProductId")
     private Product createdProduct;
     private Long producerId;
     private LocalDate date;

@@ -14,14 +14,12 @@ public class Producer {
     private User user;
     @Enumerated(value = EnumType.STRING)
     private ProducerType type;
-    private String address;
 
     public Producer() {}
-    public Producer(Long id, User user, ProducerType type, String address) {
+    public Producer(Long id, User user, ProducerType type) {
         this.id = id;
         this.user = user;
         this.type = type;
-        this.address = address;
     }
 
     public Long getId() {
@@ -33,9 +31,6 @@ public class Producer {
     public ProducerType getType() {
         return type;
     }
-    public String getAddress() {
-        return address;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -45,9 +40,6 @@ public class Producer {
     }
     public void setType(ProducerType type) {
         this.type = type;
-    }
-    public void setAddress(String address) {
-        this.address = address;
     }
 
 }

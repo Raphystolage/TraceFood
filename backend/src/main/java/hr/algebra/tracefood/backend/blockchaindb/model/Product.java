@@ -15,14 +15,16 @@ public class Product {
     @OneToOne
     @JoinColumn(name = "parentId")
     private Product parent;
+    private Long foodId;
     private String name;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private ProductType type;
 
     public Product() {}
-    public Product(Long id, Product parent, String name, ProductType type) {
+    public Product(Long id, Product parent, Long foodId, String name, ProductType type) {
         this.id = id;
         this.parent = parent;
+        this.foodId = foodId;
         this.name = name;
         this.type = type;
     }
@@ -32,6 +34,9 @@ public class Product {
     }
     public Product getParent() {
         return parent;
+    }
+    public Long getFoodId() {
+        return foodId;
     }
     public String getName() {
         return name;

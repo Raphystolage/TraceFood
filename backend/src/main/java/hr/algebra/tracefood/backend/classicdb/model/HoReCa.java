@@ -14,14 +14,12 @@ public class HoReCa {
     private User user;
     @Enumerated(value = EnumType.STRING)
     private HoReCaType type;
-    private String address;
 
     public HoReCa() {}
-    public HoReCa(Long id, User user, HoReCaType type, String address) {
+    public HoReCa(Long id, User user, HoReCaType type) {
         this.id = id;
         this.user = user;
         this.type = type;
-        this.address = address;
     }
 
     public Long getId() {
@@ -33,9 +31,6 @@ public class HoReCa {
     public HoReCaType getType() {
         return type;
     }
-    public String getAddress() {
-        return address;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -46,8 +41,5 @@ public class HoReCa {
     public void setType(HoReCaType type) {
         this.type = type;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    
+
 }

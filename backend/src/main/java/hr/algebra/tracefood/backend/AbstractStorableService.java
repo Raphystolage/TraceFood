@@ -1,5 +1,6 @@
 package hr.algebra.tracefood.backend;
 
+import hr.algebra.tracefood.backend.blockchaindb.model.Production;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
