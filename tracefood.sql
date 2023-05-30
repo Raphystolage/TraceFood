@@ -1,2 +1,2 @@
-SOURCE /home/cytech/Documents/InnovativeProject/tracefood1.sql;
-SOURCE /home/cytech/Documents/InnovativeProject/tracefood2.sql;
+SOURCE ./tracefood1.sql;
+SOURCE ./tracefood2.sql;
