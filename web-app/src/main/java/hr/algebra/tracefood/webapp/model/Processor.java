@@ -1,31 +1,36 @@
 package hr.algebra.tracefood.webapp.model;
 
-import java.util.List;
+public class Processor {
 
-public class Processor extends User {
-
-    private String type;
-    private String address;
+    private Long id;
+    private User user;
+    private ProcessorType type;
 
     public Processor() {}
-    public Processor(Long id, String emailAddress, String password, String companyName, List<CertificationType> giveableCertifications, String type, String address) {
-        super(id, emailAddress, password, companyName, giveableCertifications);
+    public Processor(User user, ProcessorType type) {
+        this.id = null;
+        this.user = user;
         this.type = type;
-        this.address = address;
     }
 
-    public String getType() {
+    public Long getId() {
+        return id;
+    }
+    public User getUser() {
+        return user;
+    }
+    public ProcessorType getType() {
         return type;
     }
-    public String getAddress() {
-        return address;
-    }
 
-    public void setType(String type) {
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public void setType(ProcessorType type) {
         this.type = type;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    
+
 }

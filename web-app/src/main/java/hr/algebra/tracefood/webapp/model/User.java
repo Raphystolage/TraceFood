@@ -1,24 +1,20 @@
 package hr.algebra.tracefood.webapp.model;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
-import java.util.List;
-
-public abstract class User {
+public class User {
 
     private Long id;
     private String emailAddress;
     private String password;
     private String companyName;
-    private List<CertificationType> giveableCertifications;
+    private String address;
 
     public User() {}
-    public User(Long id, String emailAddress, String password, String companyName, List<CertificationType> giveableCertifications) {
-        this.id = id;
+    public User(String emailAddress, String password, String companyName, String address) {
+        this.id = null;
         this.emailAddress = emailAddress;
-        this.password = DigestUtils.sha256Hex(password);
+        this.password = password;
         this.companyName = companyName;
-        this.giveableCertifications = giveableCertifications;
+        this.address = address;
     }
 
     public Long getId() {
@@ -33,8 +29,8 @@ public abstract class User {
     public String getCompanyName() {
         return companyName;
     }
-    public List<CertificationType> getGiveableCertifications() {
-        return giveableCertifications;
+    public String getAddress() {
+        return address;
     }
 
     public void setId(Long id) {
@@ -49,8 +45,8 @@ public abstract class User {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-    public void setGiveableCertifications(List<CertificationType> giveableCertifications) {
-        this.giveableCertifications = giveableCertifications;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }

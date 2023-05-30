@@ -1,18 +1,16 @@
 package hr.algebra.tracefood.webapp.model;
 
-import java.util.Optional;
-
 public class Evaluation {
 
     private Long id;
     private Consumer author;
     private Food food;
     private int rate;
-    private Optional<String> comment;
+    private String comment;
 
     public Evaluation() {}
-    public Evaluation(Long id, Consumer author, Food food, int rate, Optional<String> comment) {
-        this.id = id;
+    public Evaluation(Consumer author, Food food, int rate, String comment) {
+        this.id = null;
         this.author = author;
         this.food = food;
         this.rate = rate;
@@ -31,7 +29,7 @@ public class Evaluation {
     public int getRate() {
         return rate;
     }
-    public Optional<String> getComment() {
+    public String getComment() {
         return comment;
     }
 
@@ -47,7 +45,7 @@ public class Evaluation {
     public void setRate(int rate) {
         this.rate = rate;
     }
-    public void setComment(Optional<String> comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 

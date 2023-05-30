@@ -13,6 +13,7 @@ public class AbstractStorableService<T> {
     protected final String BASE_URL = "http://localhost:8080";
     protected final String url;
     protected final Class<T> responseType;
+    protected final RestTemplate restTemplate = new RestTemplate();
 
     public AbstractStorableService(String url,Class<T> responseType) {
         this.url = BASE_URL +url;
@@ -20,18 +21,15 @@ public class AbstractStorableService<T> {
     }
 
     public void create(T newStorable) {
-        RestTemplate restTemplate = new RestTemplate();
         HttpEntity<T> request = new HttpEntity<>(newStorable);
         ResponseEntity<T> response = restTemplate.exchange(this.url, HttpMethod.POST, request, responseType);
     }
 
         public T getById(Long id) {
-        RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(this.url+"/"+id, responseType);
     }
 
     public List<T> getAll() {
-        RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<T[]> response = (ResponseEntity<T[]>) restTemplate.getForEntity(this.url, responseType.arrayType());
         return List.of(Objects.requireNonNull(response.getBody()));
     }

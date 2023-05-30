@@ -1,18 +1,14 @@
 package hr.algebra.tracefood.webapp.model;
 
-import java.util.List;
-
-public abstract class Operation {
+public class Operation {
 
     private Long id;
     private String description;
-    private List<Certification> addedCertifications;
 
     public Operation() {}
-    public Operation(Long id, String description, List<Certification> addedCertifications) {
-        this.id = id;
+    public Operation(String description) {
+        this.id = null;
         this.description = description;
-        this.addedCertifications = addedCertifications;
     }
 
     public Long getId() {
@@ -20,9 +16,6 @@ public abstract class Operation {
     }
     public String getDescription() {
         return description;
-    }
-    public List<Certification> getAddedCertifications() {
-        return addedCertifications;
     }
 
 }

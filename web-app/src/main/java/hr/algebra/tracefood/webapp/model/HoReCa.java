@@ -1,13 +1,13 @@
 package hr.algebra.tracefood.webapp.model;
 
-public class Seller {
+public class HoReCa {
 
     private Long id;
     private User user;
-    private SellerType type;
+    private HoReCaType type;
 
-    public Seller() {}
-    public Seller(User user, SellerType type) {
+    public HoReCa() {}
+    public HoReCa(User user, HoReCaType type) {
         this.id = null;
         this.user = user;
         this.type = type;
@@ -19,7 +19,7 @@ public class Seller {
     public User getUser() {
         return user;
     }
-    public SellerType getType() {
+    public HoReCaType getType() {
         return type;
     }
 
@@ -29,7 +29,7 @@ public class Seller {
     public void setUser(User user) {
         this.user = user;
     }
-    public void setType(SellerType type) {
+    public void setType(HoReCaType type) {
         this.type = type;
     }
 
