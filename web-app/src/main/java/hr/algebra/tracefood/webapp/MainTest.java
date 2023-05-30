@@ -46,15 +46,10 @@ public class MainTest {
     }
 
     public static void main(String[] args) {
+        TransportService transportService = new TransportService();
         UserService userService = new UserService();
         ProductService productService = new ProductService();
-        OperationService operationService = new OperationService();
-        ProcessingService processingService = new ProcessingService();
-
-        List<Processing> processings = processingService.getByProcessorId(1L);
-        for(Processing processing : processings) {
-            System.out.println(processing.getDate());
-        }
+        Transport transport = transportService.createTransportOptimized("testOpt2", productService.getById(8L), userService.getById(2L), userService.getById(1L), LocalDate.now(), LocalDate.now());
 
     }
 
