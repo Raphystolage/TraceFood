@@ -1,3 +1,5 @@
+/*The CSS file*/
+
 /* General Structure */
 .header{
     margin-left: auto;
@@ -290,6 +292,16 @@
     margin-left: 5px;
 }
 
+.dot-container {
+    justify-content: flex-end;
+    display: flex;
+    width: 900px;
+}
+
+.dot {
+    margin: 0 5px;
+}
+
 /* menu */
 
 .menu {
@@ -318,4 +330,20 @@
 
 .menu li a:hover {
     color: #307211;
+}
+
+/* Operations pages */
+
+.operation-button{
+    max-height: 25px;
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    background-color: #62ac3f;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    padding: 7px;
 }

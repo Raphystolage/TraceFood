@@ -1,7 +1,7 @@
 package hr.algebra.tracefood.webapp.controller;
 
 import hr.algebra.tracefood.webapp.model.*;
-import hr.algebra.tracefood.webapp.service.ProductionService;
+import hr.algebra.tracefood.webapp.service.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,18 +42,81 @@ public class OperationController {
         return "addATransport";
     }
 
+
     @PostMapping("/addAProduction")
     public String addANewProduction(@RequestParam("productName") String productName,
                                     @RequestParam("description") String description,
-                                    @RequestParam("dateOfCreation") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date,
-                                    @RequestParam("productType") String type,
+                                    @RequestParam("dateOfCreation") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate productionDate,
+                                    @RequestParam("productType") String productType,
                                     @RequestParam("isFinishedProduct") boolean isFinishedProduct) {
         HttpSession session = request.getSession();
         Producer producer = (Producer) session.getAttribute("user");
         ProductionService productionService = new ProductionService();
-        productionService.createProductionOptimized(description, producer, date, productName, ProductType.valueOf(type), isFinishedProduct);
+        productionService.createProductionOptimized(description, producer, productionDate, productName, ProductType.valueOf(productType), isFinishedProduct);
         return "userHomePage";
     }
 
+    @PostMapping("/addAProcessing")
+    public String addANewProcessing(
+                                    @RequestParam("OriginProductID") Long OriginProductID,
+                                    @RequestParam("newProductName") String newProductName,
+                                    @RequestParam("description") String description,
+                                    @RequestParam("dateOfProcessing") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate processingDate,
+                                    @RequestParam("productType") String newProductType,
+                                    @RequestParam("isFinishedProduct") boolean isNewFinishedProduct) {
+
+        HttpSession session = request.getSession();
+        Processor processor = (Processor) session.getAttribute("user");
+        ProcessingService processingService = new ProcessingService();
+        ProductService productService = new ProductService();
+        Product originProduct = productService.getById(OriginProductID);
+        processingService.createProcessingOptimized(description, originProduct, newProductName, ProductType.valueOf(newProductType), processor, processingDate, isNewFinishedProduct);
+        return "userHomePage";
+    }
+
+    @PostMapping("/addATransport")
+    public String addANewTransport(
+            @RequestParam("productID") Long productID,
+            @RequestParam("description") String description,
+            @RequestParam("departureDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate departureDate,
+            @RequestParam("arrivalDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate arrivalDate,
+            @RequestParam("receiverID") Long receiverID) {
+
+
+        HttpSession session = request.getSession();
+        Object userObject = session.getAttribute("user");
+        User sender = new User();
+        String userType = (String) session.getAttribute("userType");
+        if (userType != null) {
+            switch (userType) {
+                case "Seller":
+                    Seller seller = (Seller) session.getAttribute("user");
+                    sender = seller.getUser();
+                    break;
+                case "Producer":
+                    Producer producer = (Producer)session.getAttribute("user");
+                    sender = producer.getUser();
+                    break;
+                case "Processor":
+                    Processor processor = (Processor) session.getAttribute("user");
+                    sender = processor.getUser();
+                    break;
+                case "HoReCa":
+                    HoReCa hoReCa = (HoReCa) session.getAttribute("user");
+                    sender = hoReCa.getUser();
+                    break;
+                default:
+                    System.out.println("The user is not recognized");
+                    break;
+            }
+        }
+        UserService userService = new UserService();
+        User receiver = userService.getById(receiverID);
+        TransportService transportService = new TransportService();
+        ProductService productService = new ProductService();
+        Product product = productService.getById(productID);
+        transportService.createTransportOptimized(description, product, sender, receiver, departureDate, arrivalDate);
+        return "userHomePage";
+    }
 
 }

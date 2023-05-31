@@ -5,6 +5,89 @@
     <title>Title</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TRACEFOOD</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div th:replace="~{menu :: menu}"></div>
+
+<div class="w-layout-layout-column center-box wf-layout-layout">
+    <div class="w-layout-cell cell-3 w-layout-layout-column">
+        <form class="signUpForm" action="/addAProcessing" method="POST">
+            <div class="w-layout-layout-column connection-fields">
+                <div class="w-layout-column">
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Origin product identification number</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">New product name</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Description</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Date</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Product type</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Final product ?</p>
+                    </div>
+
+                </div>
+                <div class="w-layout-column">
+                    <div class="w-layout-cell cell-5">
+                        <input name="OriginProductID" class="sign-in-field" type="text" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="newProductName" class="sign-in-field" type="text" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="description" class="sign-in-field" type="text" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="dateOfProcessing" class="sign-in-field" type="date" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <select name="productType" class="sign-in-field" required>
+                            <option th:each="product : ${T(hr.algebra.tracefood.webapp.model.ProductType).values()}"
+                                    th:value="${product.name()}" th:text="${product.toString()}"></option>
+                        </select>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <select name="isFinishedProduct" class="sign-in-field" required>
+                            <option value="true">Yes</option>
+                            <option value="true">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="w-layout-cell cell-2">
+                <div class="w-layout-layout sign-in wf-layout-layout">
+                    <div class="w-layout-cell cell-9">
+                        <button type="submit" class="clickableButton sign-in">Add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
+
 
 </body>
 </html>

@@ -81,13 +81,13 @@ public class SignController {
             HttpSession session = request.getSession();
             Seller newSeller = sellerService.createSellerOptimized(emailAddress, password, companyName, companyAddress, SellerType.valueOf(type));
             session.setAttribute("user", newSeller);
-            session.setAttribute("userType", UserType.SELLER);
+            session.setAttribute("userType", UserType.SELLER.toString());
 
             return "redirect:/userHomePage";
 
         } else {
             model.addAttribute("error", true);
-            return "signUpProcessor";
+            return "signUpSeller";
         }
 
     }
@@ -112,7 +112,7 @@ public class SignController {
             HttpSession session = request.getSession();
             Processor newProcessor = processorService.createProcessorOptimized(emailAddress, password, companyName, companyAddress, ProcessorType.valueOf(type));
             session.setAttribute("user", newProcessor);
-            session.setAttribute("userType", UserType.PROCESSOR);
+            session.setAttribute("userType", UserType.PROCESSOR.toString());
 
             return "redirect:/userHomePage";
 
@@ -143,7 +143,7 @@ public class SignController {
         if (signUpSuccessful) {
             HttpSession session = request.getSession();
             Producer newProducer = producerService.createProducerOptimized(emailAddress, password, companyName, companyAddress, ProducerType.valueOf(type));
-            session.setAttribute("userType", UserType.PRODUCER);
+            session.setAttribute("userType", UserType.PRODUCER.toString());
             session.setAttribute("user", newProducer);
 
             return "redirect:/userHomePage";
@@ -171,17 +171,16 @@ public class SignController {
             if (hoReCa.getUser().getEmailAddress().equals(emailAddress)) {
                 signUpSuccessful = false;
             }
-
         }
+
         if (signUpSuccessful) {
-            UserService userService = new UserService();
             HttpSession session = request.getSession();
-            User newUser = userService.create(new User(emailAddress, password, companyName, companyAddress));
-            HoReCa newHoReCa = new HoReCa(newUser, HoReCaType.valueOf(type));
-            hoReCaService.create(newHoReCa);
+            HoReCa newHoReCa = hoReCaService.createHoReCaOptimized(emailAddress, password, companyName, companyAddress, HoReCaType.valueOf(type));
+            session.setAttribute("userType", UserType.HORECA.toString());
             session.setAttribute("user", newHoReCa);
-            session.setAttribute("userType", UserType.HORECA);
+
             return "redirect:/userHomePage";
+
         } else {
             model.addAttribute("error", true);
 

@@ -41,10 +41,15 @@ public class AccountController {
                     model.addAttribute("companyName", user.getCompanyName());
                     model.addAttribute("companyAddress", user.getEmailAddress());
                     break;
+                case "HoReCa":
+                    HoReCa hoReCa = (HoReCa) userObject;
+                    user = hoReCa.getUser();
+                    model.addAttribute("companyName", user.getCompanyName());
+                    model.addAttribute("companyAddress", user.getEmailAddress());
+                    break;
                 default:
                     Processor processor = (Processor) userObject;
                     user=processor.getUser();
-
                     model.addAttribute("companyName", user.getCompanyName());
                     model.addAttribute("companyAddress", user.getEmailAddress());
                     break;

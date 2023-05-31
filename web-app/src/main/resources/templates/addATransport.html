@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>TRACEFOOD</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
 </head>
+
 <body>
 
+<div th:replace="~{header :: header}"></div>
+
+<div th:replace="~{menu :: menu}"></div>
+
+<div class="w-layout-layout-column center-box wf-layout-layout">
+    <div class="w-layout-cell cell-3 w-layout-layout-column">
+        <form class="signUpForm" action="/addATransport" method="POST">
+            <div class="w-layout-layout-column connection-fields">
+                <div class="w-layout-column">
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Product identification number</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Description</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Receiver</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Departure date</p>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <p class="operation-button">Arrival date</p>
+                    </div>
+
+                </div>
+                <div class="w-layout-column">
+                    <div class="w-layout-cell cell-5">
+                        <input name="productID" class="sign-in-field" type="text" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="description" class="sign-in-field" type="text" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="receiverID" class="sign-in-field" type="text" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="departureDate" class="sign-in-field" type="date" required/>
+                    </div>
+                    <div class="w-layout-cell cell-5">
+                        <input name="arrivalDate" class="sign-in-field" type="date" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="w-layout-cell cell-2">
+                <div class="w-layout-layout sign-in wf-layout-layout">
+                    <div class="w-layout-cell cell-9">
+                        <button type="submit" class="clickableButton sign-in">Add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
 </body>
+
 </html>
