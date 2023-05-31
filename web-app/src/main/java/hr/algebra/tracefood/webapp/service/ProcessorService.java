@@ -11,6 +11,9 @@ public class ProcessorService extends AbstractClassicDBStorableService<Processor
         super("/processor", Processor.class);
     }
 
+    public Processor getByUserId(Long userId) {
+        return restTemplate.getForObject(url+"?userId="+userId,Processor.class);
+    }
     public Processor createProcessorOptimized(String userEmailAddress, String userPassword, String userCompanyName, String userAddress, ProcessorType type) {
         UserService userService = new UserService();
         User newUser = userService.create(new User(userEmailAddress,userPassword,userCompanyName,userAddress));

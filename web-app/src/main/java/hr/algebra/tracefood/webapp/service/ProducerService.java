@@ -11,6 +11,9 @@ public class ProducerService extends AbstractClassicDBStorableService<Producer> 
         super("/producer", Producer.class);
     }
 
+    public Producer getByUserId(Long userId) {
+        return restTemplate.getForObject(url+"?userId="+userId,Producer.class);
+    }
     public Producer createProducerOptimized(String userEmailAddress, String userPassword, String userCompanyName, String userAddress, ProducerType type) {
         UserService userService = new UserService();
         User newUser = userService.create(new User(userEmailAddress,userPassword,userCompanyName,userAddress));

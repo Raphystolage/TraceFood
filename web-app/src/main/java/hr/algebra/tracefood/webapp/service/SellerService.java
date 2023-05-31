@@ -11,6 +11,9 @@ public class SellerService extends AbstractClassicDBStorableService<Seller> {
         super("/seller", Seller.class);
     }
 
+    public Seller getByUserId(Long userId) {
+        return restTemplate.getForObject(url+"?userId="+userId,Seller.class);
+    }
     public Seller createSellerOptimized(String userEmailAddress, String userPassword, String userCompanyName, String userAddress, SellerType type) {
         UserService userService = new UserService();
         User newUser = userService.create(new User(userEmailAddress,userPassword,userCompanyName,userAddress));
