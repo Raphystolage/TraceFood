@@ -5,7 +5,9 @@ import hr.algebra.tracefood.webapp.model.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -26,6 +28,18 @@ public class TransportService extends AbstractBlockchainDBStorableService<Transp
     }
     public List<Transport> getBySenderId(Long id) {
         return List.of(Objects.requireNonNull(restTemplate.getForObject(url + "?senderId?" + id, Transport[].class)));
+    }
+
+    public OperationDisplay toOperationDisplay(Transport transport) {
+        Map<String, String> attributs = new HashMap<>();
+        attributs.put("operationDescription",transport.getOperation().getDescription());
+        attributs.put("productType", transport.getProduct().getType().toString());
+        attributs.put("productName", transport.getProduct().getName());
+        attributs.put("senderCompanyName", transport.getSender().getCompanyName());
+        attributs.put("receiverCompanyName", transport.getReceiver().getCompanyName());
+        attributs.put("departureDate", transport.getDepartureDate().toString());
+        attributs.put("arrivalDate", transport.getArrivalDate().toString());
+        return new OperationDisplay(transport.getDepartureDate(),OperationType.TRANSPORT,attributs);
     }
 
 }

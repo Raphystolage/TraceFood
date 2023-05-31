@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -29,6 +31,16 @@ public class ProductionService extends AbstractBlockchainDBStorableService<Produ
     }
     public List<Production> getAllByProducerId(Long id) {
         return List.of(Objects.requireNonNull(restTemplate.getForObject(url + "?producerId=" + id, Production[].class)));
+    }
+
+    public OperationDisplay toOperationDisplay(Production production) {
+        Map<String, String> attributs = new HashMap<>();
+        attributs.put("operationDescription",production.getOperation().getDescription());
+        attributs.put("producerCompanyName",production.getProducer().getUser().getCompanyName());
+        attributs.put("productType", production.getCreatedProduct().getType().toString());
+        attributs.put("productName", production.getCreatedProduct().getName());
+        attributs.put("date",production.getDate().toString());
+        return new OperationDisplay(production.getDate(),OperationType.PRODUCTION,attributs);
     }
 
 }
