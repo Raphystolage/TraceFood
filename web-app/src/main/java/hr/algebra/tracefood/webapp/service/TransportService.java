@@ -21,7 +21,7 @@ public class TransportService extends AbstractBlockchainDBStorableService<Transp
         return super.create(new Transport(newOperation,product,sender,receiver,departureDate,arrivalDate));
     }
 
-    public List<Transport> getByProductId(Long id) {
+    public List<Transport> getAllByProductId(Long id) {
         return List.of(Objects.requireNonNull(restTemplate.getForObject(url + "?productId=" + id, Transport[].class)));
     }
     public List<Transport> getBySenderId(Long id) {

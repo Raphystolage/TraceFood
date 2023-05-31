@@ -4,6 +4,7 @@ import hr.algebra.tracefood.webapp.model.*;
 import hr.algebra.tracefood.webapp.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,11 +62,11 @@ public class SignController {
     }
 
     @PostMapping("/signUpSeller")
-    public String SignUpProcessorForm(@RequestParam("companyName") String companyName,
-                                    @RequestParam("companyAddress") String companyAddress,
-                                    @RequestParam("type") SellerType type,
-                                    @RequestParam("emailAddress") String emailAddress,
-                                    @RequestParam("password") String password, Model model) {
+    public String SignUpSellerForm(@RequestParam("companyName") String companyName,
+                                   @RequestParam("companyAddress") String companyAddress,
+                                   @RequestParam("type") String type,
+                                   @RequestParam("emailAddress") String emailAddress,
+                                   @RequestParam("password") String password, Model model) {
 
         List<Seller> sellers = sellerService.getAll();
         boolean signUpSuccessful = true;
@@ -78,10 +79,9 @@ public class SignController {
 
         if (signUpSuccessful) {
             HttpSession session = request.getSession();
-            User newUser = new User(emailAddress, password, companyName, companyAddress);
-            Seller newSeller = new Seller(newUser, type);
-            sellerService.create(newSeller);
+            Seller newSeller = sellerService.createSellerOptimized(emailAddress, password, companyName, companyAddress, SellerType.valueOf(type));
             session.setAttribute("user", newSeller);
+            session.setAttribute("userType", UserType.SELLER);
 
             return "redirect:/userHomePage";
 
@@ -94,15 +94,15 @@ public class SignController {
 
     @PostMapping("/signUpProcessor")
     public String SignUpProcessorForm(@RequestParam("companyName") String companyName,
-                                    @RequestParam("companyAddress") String companyAddress,
-                                    @RequestParam("type") ProcessorType type,
-                                    @RequestParam("emailAddress") String emailAddress,
-                                    @RequestParam("password") String password, Model model) {
+                                      @RequestParam("companyAddress") String companyAddress,
+                                      @RequestParam("type") String type,
+                                      @RequestParam("emailAddress") String emailAddress,
+                                      @RequestParam("password") String password, Model model) {
 
         List<Processor> processors = processorService.getAll();
         boolean signUpSuccessful = true;
 
-        for (Processor processor: processors) {
+        for (Processor processor : processors) {
             if (processor.getUser().getEmailAddress().equals(emailAddress)) {
                 signUpSuccessful = false;
             }
@@ -110,10 +110,9 @@ public class SignController {
 
         if (signUpSuccessful) {
             HttpSession session = request.getSession();
-            User newUser = new User(emailAddress, password, companyName, companyAddress);
-            Processor newProcessor = new Processor(newUser, type);
-            processorService.create(newProcessor);
+            Processor newProcessor = processorService.createProcessorOptimized(emailAddress, password, companyName, companyAddress, ProcessorType.valueOf(type));
             session.setAttribute("user", newProcessor);
+            session.setAttribute("userType", UserType.PROCESSOR);
 
             return "redirect:/userHomePage";
 
@@ -127,15 +126,15 @@ public class SignController {
 
     @PostMapping("/signUpProducer")
     public String SignUpProducerForm(@RequestParam("companyName") String companyName,
-                                    @RequestParam("companyAddress") String companyAddress,
-                                    @RequestParam("type") ProducerType type,
-                                    @RequestParam("emailAddress") String emailAddress,
-                                    @RequestParam("password") String password, Model model) {
+                                     @RequestParam("companyAddress") String companyAddress,
+                                     @RequestParam("type") String type,
+                                     @RequestParam("emailAddress") String emailAddress,
+                                     @RequestParam("password") String password, Model model) {
 
         List<Producer> producers = producerService.getAll();
         boolean signUpSuccessful = true;
 
-        for (Producer producer: producers) {
+        for (Producer producer : producers) {
             if (producer.getUser().getEmailAddress().equals(emailAddress)) {
                 signUpSuccessful = false;
             }
@@ -143,9 +142,8 @@ public class SignController {
 
         if (signUpSuccessful) {
             HttpSession session = request.getSession();
-            User newUser = new User(emailAddress, password, companyName, companyAddress);
-            Producer newProducer = new Producer(newUser, type);
-            producerService.create(newProducer);
+            Producer newProducer = producerService.createProducerOptimized(emailAddress, password, companyName, companyAddress, ProducerType.valueOf(type));
+            session.setAttribute("userType", UserType.PRODUCER);
             session.setAttribute("user", newProducer);
 
             return "redirect:/userHomePage";
@@ -160,16 +158,16 @@ public class SignController {
 
     @PostMapping("/signUpHoReCa")
     public String SignUpHoReCaForm(@RequestParam("companyName") String companyName,
-                                    @RequestParam("emailAddress") String emailAddress,
-                                    @RequestParam("companyAddress") String companyAddress,
-                                    @RequestParam("password") String password,
+                                   @RequestParam("emailAddress") String emailAddress,
+                                   @RequestParam("companyAddress") String companyAddress,
+                                   @RequestParam("password") String password,
                                    @RequestParam("type") String type,
                                    Model model) {
 
         List<HoReCa> hoReCas = hoReCaService.getAll();
         boolean signUpSuccessful = true;
 
-        for (HoReCa hoReCa: hoReCas) {
+        for (HoReCa hoReCa : hoReCas) {
             if (hoReCa.getUser().getEmailAddress().equals(emailAddress)) {
                 signUpSuccessful = false;
             }
@@ -179,10 +177,10 @@ public class SignController {
             UserService userService = new UserService();
             HttpSession session = request.getSession();
             User newUser = userService.create(new User(emailAddress, password, companyName, companyAddress));
-            HoReCa newHoReCa = new HoReCa(newUser, HoReCaType.valueOf(type)) ;
+            HoReCa newHoReCa = new HoReCa(newUser, HoReCaType.valueOf(type));
             hoReCaService.create(newHoReCa);
             session.setAttribute("user", newHoReCa);
-
+            session.setAttribute("userType", UserType.HORECA);
             return "redirect:/userHomePage";
         } else {
             model.addAttribute("error", true);
@@ -193,46 +191,94 @@ public class SignController {
     }
 
 
-
     @PostMapping("/signIn")
-    public String SignIn(@RequestParam("emailAddress") String emailAddress, @RequestParam("password") String password, Model model) {
+    public String SignIn(@RequestParam("emailAddress") String emailAddress, @RequestParam("password") String password, @RequestParam("type") String type, Model model) {
 
         boolean connexionSuccessful = false;
-        UserService userService = new UserService();
-        List<User> users = userService.getAll();
-        User rightUser = null;
+        HttpSession session = request.getSession();
+        String hashPassword = DigestUtils.sha256Hex(password);
 
-        for (User user : users) {
-            if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(password)) {
-                connexionSuccessful = true;
-                rightUser = user;
-            }
-        }
-
-        if (connexionSuccessful) {
-            HttpSession session = request.getSession();
-            switch (rightUser.getClass().getSimpleName()) {
-                case "Seller":
-                    session.setAttribute("user", userService.getSellerByUserId(rightUser.getId()));
-                    break;
-                case "Processor":
-                    session.setAttribute("user", userService.getProcessorByUserId(rightUser.getId()));
-                    break;
-                case "Producer":
-                   session.setAttribute("user", userService.getProducerByUserId(rightUser.getId()));
-                    break;
-                case "HoReCa":
-                    session.setAttribute("user", userService.getHoReCaByUserId(rightUser.getId()));
-                    break;
-                default:
-                    System.out.println("User type not recognized.");
-                    break;
-            }
-
-            return "redirect:/userHomePage";
-        } else {
-            model.addAttribute("error", true);
-            return "signIn";
+        switch (type) {
+            case "Seller":
+                SellerService sellerService = new SellerService();
+                List<Seller> sellers = sellerService.getAll();
+                Seller rightSeller = null;
+                for (Seller seller : sellers) {
+                    User user = seller.getUser();
+                    if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(hashPassword)) {
+                        connexionSuccessful = true;
+                        rightSeller = seller;
+                    }
+                }
+                if (connexionSuccessful) {
+                    session.setAttribute("userType", type);
+                    session.setAttribute("user", rightSeller);
+                    return "redirect:/userHomePage";
+                } else {
+                    model.addAttribute("error", true);
+                    return "signIn";
+                }
+            case "Processor":
+                ProcessorService processorService = new ProcessorService();
+                List<Processor> processors = processorService.getAll();
+                Processor rightProcessor = null;
+                for (Processor processor : processors) {
+                    User user = processor.getUser();
+                    if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(hashPassword)) {
+                        connexionSuccessful = true;
+                        rightProcessor = processor;
+                    }
+                }
+                if (connexionSuccessful) {
+                    session.setAttribute("user", rightProcessor);
+                    session.setAttribute("userType", type);
+                    return "redirect:/userHomePage";
+                } else {
+                    model.addAttribute("error", true);
+                    return "signIn";
+                }
+            case "Producer":
+                ProducerService producerService = new ProducerService();
+                List<Producer> producers = producerService.getAll();
+                Producer rightProducer = null;
+                for (Producer producer : producers) {
+                    User user = producer.getUser();
+                    if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(hashPassword)) {
+                        connexionSuccessful = true;
+                        rightProducer = producer;
+                    }
+                }
+                if (connexionSuccessful) {
+                    session.setAttribute("userType", type);
+                    session.setAttribute("user", rightProducer);
+                    return "redirect:/userHomePage";
+                } else {
+                    model.addAttribute("error", true);
+                    return "signIn";
+                }
+            case "HoReCa":
+                HoReCaService hoReCaService = new HoReCaService();
+                List<HoReCa> hoReCas = hoReCaService.getAll();
+                HoReCa rightHoReCa = null;
+                for (HoReCa hoReCa : hoReCas) {
+                    User user = hoReCa.getUser();
+                    if (user.getEmailAddress().equals(emailAddress) && user.getPassword().equals(hashPassword)) {
+                        connexionSuccessful = true;
+                        rightHoReCa = hoReCa;
+                    }
+                }
+                if (connexionSuccessful) {
+                    session.setAttribute("userType", type);
+                    session.setAttribute("user", rightHoReCa);
+                    return "redirect:/userHomePage";
+                } else {
+                    model.addAttribute("error", true);
+                    return "signIn";
+                }
+            default:
+                System.out.println("User type not recognized.");
+                model.addAttribute("error", true);
+                return "signIn";
         }
     }
 

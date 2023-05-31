@@ -42,7 +42,10 @@ public class User {
         this.emailAddress = emailAddress;
     }
     public void setPassword(String password) {
-        this.password = DigestUtils.sha256Hex(password);
+        this.password = password;
+    }
+    public void hashPassword() {
+        this.password = DigestUtils.sha256Hex(this.password);
     }
     public void setCompanyName(String companyName) {
         this.companyName = companyName;

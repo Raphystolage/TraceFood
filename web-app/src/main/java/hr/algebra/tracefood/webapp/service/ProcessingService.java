@@ -23,7 +23,7 @@ public class ProcessingService extends AbstractBlockchainDBStorableService<Proce
         return super.create(new Processing(newOperation,originProduct,newProduct,processor,date));
     }
 
-    public List<Processing> getByOriginProductId(Long originProductId) {
+    public List<Processing> getAllByOriginProductId(Long originProductId) {
         return List.of(Objects.requireNonNull(restTemplate.getForObject(url + "?originProductId=" + originProductId, Processing[].class)));
     }
 

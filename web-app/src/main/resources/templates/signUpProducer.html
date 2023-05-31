@@ -46,7 +46,7 @@
 
               <select id="type" name="type" class="sign-in-field" required>
                 <option th:each="producer : ${T(hr.algebra.tracefood.webapp.model.ProducerType).values()}"
-                        th:value="${producer}" th:text="${producer.toString()}"></option>
+                        th:value="${producer.name()}" th:text="${producer.toString()}"></option>
               </select>
 
             </div>

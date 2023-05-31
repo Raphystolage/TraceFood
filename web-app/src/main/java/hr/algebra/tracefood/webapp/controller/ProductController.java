@@ -28,7 +28,6 @@ public class ProductController {
         return "searchForAProduct";
     }
 
-    /*
     @PostMapping("/informationAboutAProduct")
     public String searchForAProduct(Model model, @RequestParam("productId") Long productId) {
 
@@ -38,24 +37,23 @@ public class ProductController {
         ProcessingService processingService = new ProcessingService();
         TransportService transportService = new TransportService();
 
-        List<Product> productions = new ArrayList<>();
         List<Processing> process = new ArrayList<>();
         List<Transport> transports = new ArrayList<>();
 
-
-        while(product.getParent().isPresent()) {
-            productions.addAll(productionService.getAllByCreatedProductId(productId));
+        Production production = new Production();
+        while(product.getParent() != null) {
+            production= productionService.getByCreatedProductId(productId);
             process.addAll(processingService.getAllByOriginProductId(productId));
             transports.addAll(transportService.getAllByProductId(productId));
             product = product.getParent();
         }
 
-        model.addAttribute("productions", productions);
+        model.addAttribute("production", production);
         model.addAttribute("process", process);
         model.addAttribute("transports", transports);
 
         return "informationAboutAProduct";
     }
 
-     */
+
 }

@@ -290,6 +290,16 @@
   margin-left: 5px;
 }
 
+.dot-container {
+  justify-content: flex-end;
+  display: flex;
+  width: 900px;
+}
+
+.dot {
+  margin: 0 5px;
+}
+
 /* menu */
 
 .menu {

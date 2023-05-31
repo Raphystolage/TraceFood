@@ -27,7 +27,7 @@ public class ProductionService extends AbstractBlockchainDBStorableService<Produ
     public Production getByCreatedProductId(Long id) {
         return restTemplate.getForObject(url+"?createdProductId="+id,Production.class);
     }
-    public List<Production> getByProducerId(Long id) {
+    public List<Production> getAllByProducerId(Long id) {
         return List.of(Objects.requireNonNull(restTemplate.getForObject(url + "?producerId=" + id, Production[].class)));
     }
 

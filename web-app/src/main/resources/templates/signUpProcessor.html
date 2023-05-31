@@ -46,7 +46,7 @@
 
                             <select id="type" name="type" class="sign-in-field" required>
                                 <option th:each="processor : ${T(hr.algebra.tracefood.webapp.model.ProcessorType).values()}"
-                                        th:value="${processor}" th:text="${processor.toString()}"></option>
+                                        th:value="${processor.name()}" th:text="${processor.toString()}"></option>
                             </select>
 
                         </div>

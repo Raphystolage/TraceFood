@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TRACEFOOD</title>
-  <link rel="stylesheet" type="text/css" href="style2.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
 
@@ -26,7 +26,7 @@
         </div>
         <div class="w-layout-column">
           <div class="w-layout-cell">
-            <p class="informationItem rightText">th:text="${session.companyName}</p>
+            <p class="informationItem rightText" th:text="${companyName}"></p>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="w-layout-column">
           <div class="w-layout-cell informationItem">
-            <p class="rightText">th:text="${session.companyAddress}</p>
+            <p class="informationItem rightText" th:text="${companyAddress}"></p>
           </div>
         </div>
       </div>
@@ -50,25 +50,31 @@
             <p class="informationItem">Password</p>
           </div>
         </div>
+
         <div class="w-layout-column">
-          <div class="w-layout-cell">
-            <p class="informationItem rightText"> th:each="i : ${#numbers.sequence(1, pwdNumber)}" th:text="•"> </p>
+          <div class="w-layout-cell informationItem ">
+            <div class="dot-container rightText">
+
+              <p class="dot" th:each="i : ${#numbers.sequence(1, 6)}">.</p>
+            </div>
           </div>
         </div>
+
+
+
       </div>
 
         <div class="w-layout-layout-column connection-fields informationBox">
           <div class="w-layout-column">
             <div class="w-layout-cell informationItem">
-              <p>th:each="certification: ${certifications}" th:text="${certifiction}</p>
+              <p class="informationItem">Certifications : </p>
             </div>
           </div>
           <div class="w-layout-column">
             <div class="w-layout-cell informationItem">
               <form class="rightText" action="/addNewCertification" method="POST">
                 <select name="newCertification" class="sign-in-field" required>
-                  th:each="certification: ${allCertifications}"
-                  <option value=th:text="${certifiction}>th:text="${certifiction.getName()}</option>
+                  <option></option>
                 </select>
                 <button type="submit" name="newCertification"  class="clickableButton">Add new certification</button>
               </form>

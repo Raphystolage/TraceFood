@@ -12,7 +12,7 @@
 		<div id="w-node-2" class="w-layout-cell">
 			<h1 class="tracefood">TRACEFOOD</h1>
 
-		<div th:if="${error}" class="error-message">The email address or the password is wrong.</div>
+		<div th:if="${error}" class="error-message">The email address, the password or the type is wrong.</div>
 
 
 		<div id="w-node-3" class="w-layout-cell cell-3">
@@ -25,12 +25,18 @@
 						<input id="emailAddress" name="emailAddress" class="sign-in-field" type="email" placeholder="name@example.com" required />
 					</div>
 					<div class="w-layout-cell cell-5">
-						<label for="password" class="sign-button 
- ">Password</label>
+						<label for="password" class="sign-button ">Password</label>
 					</div>
 					<div class="w-layout-cell cell-5">
 						<input id="password" name="password" class="sign-in-field " type="password" required />
 					</div>
+					<div class="w-layout-cell cell-5">
+						<label for="password" class="sign-button ">User type</label>
+					</div>
+						<select id="type" name="type" class="sign-in-field" required>
+							<option th:each="userType : ${T(hr.algebra.tracefood.webapp.model.UserType).values()}"
+									th:value="${userType}" th:text="${userType.toString()}"></option>
+						</select>
 				</div>
 				<div id="w-node-10" class="w-layout-cell cell-2">
 					<div id="w-node-11" class="w-layout-layout sign-in wf-layout-layout">
