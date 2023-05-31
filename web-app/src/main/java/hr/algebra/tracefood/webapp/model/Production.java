@@ -17,7 +17,7 @@ public class Production {
         this.id = null;
         this.operation = operation;
         this.createdProduct = createdProduct;
-        this.producerId = 1L;
+        this.producerId = producer.getId();
         this.date = date;
     }
 

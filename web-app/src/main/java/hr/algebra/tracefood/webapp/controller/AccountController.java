@@ -98,6 +98,9 @@ public class AccountController {
     public String history(Model model) {
 
         HttpSession session = request.getSession();
+        Object userObject = session.getAttribute("user");
+        User user = new User();
+        String userType = (String) session.getAttribute("userType");
 
         TransportService transportService = new TransportService();
         ProcessingService processingService = new ProcessingService();
@@ -106,37 +109,34 @@ public class AccountController {
         List<Transport> transports = null;
         List<Processing> processes = null;
         List<Production> productions = null;
-
-        Object userObject = model.getAttribute("user");
-        String userType = (String) session.getAttribute("userType");
-
-        if (userType!= null) {
+        if (userType != null) {
             switch (userType) {
                 case "Processor":
                     Processor processor = (Processor) userObject;
                     processes = processingService.getByProcessorId(processor.getId());
-                    transportService.getBySenderId(processor.getId());
-
+                    transports = transportService.getBySenderId(processor.getId());
+                    model.addAttribute("proccess", processes);
+                    model.addAttribute("transports", transports);
                     break;
                 case "Producer":
                     Producer producer = (Producer) userObject;
                     productions = productionService.getAllByProducerId(producer.getId());
                     transportService.getBySenderId(producer.getId());
                     model.addAttribute(productions);
+                    model.addAttribute("transports", transports);
                     break;
                 case "Seller":
                     Seller seller = (Seller) userObject;
                     transports = transportService.getBySenderId(seller.getId());
-                    model.addAttribute(processes);
+                    model.addAttribute(transports);
                     break;
                 default:
                     HoReCa hoReCa = (HoReCa) userObject;
                     transports = transportService.getBySenderId(hoReCa.getId());
+                    model.addAttribute("transports", transports);
                     break;
             }
         }
-
-        model.addAttribute(transports);
 
         return "informationAboutAProduct";
     }

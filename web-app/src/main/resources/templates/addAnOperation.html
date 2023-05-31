@@ -21,12 +21,12 @@
       <div th:switch="${session.userType}">
         <div th:case="Producer">
           <div class="w-layout-cell cell-4">
-            <a class="homeButton clickableButton">New production</a>
+            <a th:href="@{/addAProduction}" class="homeButton clickableButton">New production</a>
           </div>
         </div>
         <div th:case="Processor">
           <div class="w-layout-cell cell-4">
-            <a class="homeButton clickableButton">New processing</a>
+            <a th:href="@{/addAProcessing}" class="homeButton clickableButton">New processing</a>
           </div>
         </div>
         <div th:case="*">
@@ -34,7 +34,7 @@
       </div>
 
       <div class="w-layout-cell cell-5">
-        <a class="homeButton clickableButton">New Transportation</a>
+        <a th:href="@{/addATransport}" class="homeButton clickableButton">New Transportation</a>
       </div>
     </div>
 
