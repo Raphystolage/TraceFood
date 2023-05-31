@@ -1,0 +1,16 @@
+package hr.algebra.tracefood.backend.classicdb.model;
+
+public enum ProcessorType {
+
+    FLOURMILLER,
+    MEATPROCESSOR,
+    DAIRYPROCESSOR,
+    FISHPROCESSOR,
+    FRUITANDVEGETABLEPROCESSOR,
+    COFFEEPROCESSOR,
+    SNACKFOODPROCESSOR,
+    BEVERAGEPROCESSOR,
+    BAKERYPROCESSOR,
+    CONFECTIONERYPROCESSOR
+
+}

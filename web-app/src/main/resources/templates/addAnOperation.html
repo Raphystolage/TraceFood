@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" style="font-family: Arial; ">
+
+<head>
+  <meta charset="UTF-8">
+  <title> TRACEFOOD </title>
+  <link rel="stylesheet" type="text/css" href="style2.css" />
+</head>
+
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div th:replace="~{menu :: menu}"></div>
+
+<div id="w-node-1" class="w-layout-layout center-box wf-layout-layout">
+  <div id="w-node-3" class="w-layout-cell cell-3">
+
+    <div id="w-node-5" class="w-layout-layout connection-fields wf-layout-layout">
+/*
+      <div th:switch="${session.user.getClass().getName()}">
+        <div th:case="Producer">
+          <div class="w-layout-cell cell-4">
+            <a class="homeButton clickableButton">New production</a>
+          </div>
+        </div>
+        <div th:case="Processor">
+          <div class="w-layout-cell cell-5">
+            <a class="homeButton clickableButton">New processing</a>
+          </div>
+        </div>
+        <div th:case="*">
+        </div>
+      </div>
+*/
+      <div class="w-layout-cell cell-5">
+        <a class="homeButton clickableButton">New Transportation</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+
+</html>

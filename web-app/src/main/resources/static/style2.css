@@ -1,0 +1,321 @@
+/* General Structure */
+.header{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body {
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.center-box {
+    width: 900px;
+    max-width: 900px;
+    background-color: rgba(130, 180, 122, .25);
+    border-radius: 20px;
+    margin: 150px auto auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.center-box-user {
+    width: 1600px;
+    background-color: rgba(130, 180, 122, .25);
+    border-radius: 20px;
+    margin: 70px auto auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.tracefood {
+    color: #aa063f;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Exo, sans-serif;
+}
+
+.w-layout-layout {
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    grid-auto-columns: 1fr;
+    justify-content: center;
+    padding: 10px;
+}
+
+.w-layout-layout-column {
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    grid-auto-columns: 1fr;
+    justify-content: center;
+    padding: 10px;
+    display: flex;
+}
+
+.w-layout-cell {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.w-layout-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rightText{
+    width: 750px;
+    text-align: right;
+}
+
+.cell {
+    justify-content: center;
+}
+
+.clickableButton{
+    background-color: #62ac3f;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    padding: 7px;
+    color: #fff;
+
+}
+
+.clickableButton:hover{
+    background-color: #307211;
+}
+
+
+#w-node-1 {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+}
+
+
+#w-node-4,
+#w-node-3 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+#w-node-5 {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr;
+}
+
+#w-node-6,
+#w-node-7,
+#w-node-8,
+#w-node-9,
+#w-node-10 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+#w-node-11 {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+}
+
+#w-node-12 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+
+.cell-3 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell-4 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.connection-fields, .cell-5, .cell-2, cell-9 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.cell-8 {
+    border-radius: 20px;
+}
+
+/* Who are you page */
+
+.who_are_you_page {
+    width: 800px;
+    height: 700px;
+    border-radius: 0;
+    flex: 0 auto;
+    margin: auto;
+}
+
+.who-box {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-weight: 400;
+}
+
+.user {
+    max-height: 25px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7px;
+}
+
+.users {
+    width: 170px;
+    text-align: center;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+}
+
+#w-node-chooseUserType1 {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+}
+
+#w-node-chooseUserType2,
+#w-node-chooseUserType3,
+#w-node-chooseUserType4 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+#w-node-chooseUserType5 {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#w-node-chooseUserType6,
+#w-node-chooseUserType7,
+#w-node-chooseUserType8,
+#w-node-chooseUserType9 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+/* Sign in and Sign up pages */
+
+.sign-in-field {
+    color: #306e45;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 17px;
+    margin-bottom: 16px;
+    width: 170px;
+    padding: 8px;
+    border: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sign-button {
+    max-height: 25px;
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    background-color: #62ac3f;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    padding: 7px;
+}
+
+#type{
+    padding: 7px;
+    width: 185px;
+}
+
+.sign-in {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.text-block {
+    color: #000;
+    text-decoration: none;
+}
+
+.error-message{
+    color: #aa063f;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* User home page*/
+
+.homeButton{
+    max-height: 25px;
+    width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cell-3, .cell-4, .cell-5{
+    margin-bottom: 20px;
+}
+
+/* Account information */
+
+.informationItem{
+    border-color: #000000;
+}
+
+.informationBox{
+    width: 1500px;
+    border-bottom: solid 1px;
+}
+
+/* information about a product*/
+
+.search-button{
+    margin-left: 5px;
+}
+
+/* menu */
+
+.menu {
+    padding: 10px;
+    margin-right: 400px;
+    margin-left: 400px;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu li a {
+    color: #333;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    color: #307211;
+}

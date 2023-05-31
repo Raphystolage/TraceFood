@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html" style="font-family: Arial;">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TRACEFOOD</title>
+  <link rel="stylesheet" type="text/css" href="style2.css" />
+
+</head>
+
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<div th:replace="~{menu :: menu}"></div>
+
+<div class="w-layout-layout-column center-box-user wf-layout-layout">
+  <div class="w-layout-cell cell-3 w-layout-layout-column">
+    <div class="wf-layout-layout">
+
+      <div class="w-layout-layout-column connection-fields informationBox">
+        <div class="w-layout-column">
+          <div class="w-layout-cell">
+            <p class="informationItem">Company name</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell">
+            <p class="informationItem rightText">th:text="${session.companyName}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-layout-layout-column connection-fields informationBox">
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="">Company address</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell informationItem">
+            <p class="rightText">th:text="${session.companyAddress}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-layout-layout-column connection-fields informationBox">
+        <div class="w-layout-column">
+          <div class="w-layout-cell">
+            <p class="informationItem">Password</p>
+          </div>
+        </div>
+        <div class="w-layout-column">
+          <div class="w-layout-cell">
+            <p class="informationItem rightText"> th:each="i : ${#numbers.sequence(1, pwdNumber)}" th:text="•"> </p>
+          </div>
+        </div>
+      </div>
+
+        <div class="w-layout-layout-column connection-fields informationBox">
+          <div class="w-layout-column">
+            <div class="w-layout-cell informationItem">
+              <p>th:each="certification: ${certifications}" th:text="${certifiction}</p>
+            </div>
+          </div>
+          <div class="w-layout-column">
+            <div class="w-layout-cell informationItem">
+              <form class="rightText" action="/addNewCertification" method="POST">
+                <select name="newCertification" class="sign-in-field" required>
+                  th:each="certification: ${allCertifications}"
+                  <option value=th:text="${certifiction}>th:text="${certifiction.getName()}</option>
+                </select>
+                <button type="submit" name="newCertification"  class="clickableButton">Add new certification</button>
+              </form>
+            </div>
+          </div>
+        </div>
+          <div class="w-layout-layout-column connection-fields">
+            <div class="w-layout-column">
+              <div class="w-layout-cell informationItem cell-5">
+                <form id="deleteForm" action="/deleteAccount" method="DELETE">
+                  <button type="submit" class="clickableButton">Delete the account</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
