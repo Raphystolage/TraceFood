@@ -16,16 +16,17 @@ import java.util.List;
 
 @Controller
 public class AccountController {
-/*
+
     @Autowired
     private HttpServletRequest request;
 
 
- */
     @GetMapping("/accountInformation")
     public String accountInformation(Model model) {
-/*
+
         HttpSession session = request.getSession();
+
+
         User user = session.getAttribute("user").getUser();
         model.addAttribute("companyName", user.getCompanyName());
         model.addAttribute("companyAddress", user.getEmailAddress());
@@ -33,7 +34,6 @@ public class AccountController {
         model.addAttribute("certifications", user.getGiveableCertifications());
         model.addAttribute("allCertifications", new CertificationService().getAll());
 
- */
         return "accountInformation";
     }
 /*
