@@ -10,13 +10,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import static hr.algebra.tracefood.webapp.model.OperationDisplay.sortOperations;
 
 @Controller
 public class AccountController {
 
     @Autowired
     private HttpServletRequest request;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private ProductionService productionService;
+
+    @Autowired
+    private TransportService transportService;
+
+    @Autowired
+    private ProcessingService processingService;
 
 
     @GetMapping("/accountInformation")
@@ -100,6 +116,7 @@ public class AccountController {
     }
 
     @GetMapping("/history")
+
     public String history(Model model) {
 
         HttpSession session = request.getSession();
@@ -110,39 +127,43 @@ public class AccountController {
         TransportService transportService = new TransportService();
         ProcessingService processingService = new ProcessingService();
         ProductionService productionService = new ProductionService();
-
-        List<Transport> transports = null;
-        List<Processing> processes = null;
-        List<Production> productions = null;
+        List<OperationDisplay> operations = new ArrayList();
+        List<Transport> transports = new ArrayList<>();
         if (userType != null) {
             switch (userType) {
                 case "Processor":
                     Processor processor = (Processor) userObject;
-                    processes = processingService.getByProcessorId(processor.getId());
+                    List<Processing> processes = processingService.getByProcessorId(processor.getId());
                     transports = transportService.getBySenderId(processor.getId());
-                    model.addAttribute("proccess", processes);
-                    model.addAttribute("transports", transports);
+                    for (Processing processing : processes){
+                        operations.add(processingService.toOperationDisplay(processing));
+                    }
                     break;
                 case "Producer":
                     Producer producer = (Producer) userObject;
-                    productions = productionService.getAllByProducerId(producer.getId());
+                    List<Production> productions = productionService.getAllByProducerId(producer.getId());
+                    for (Production production : productions){
+                        operations.add(productionService.toOperationDisplay(production));
+                    }
                     transportService.getBySenderId(producer.getId());
-                    model.addAttribute(productions);
-                    model.addAttribute("transports", transports);
                     break;
                 case "Seller":
                     Seller seller = (Seller) userObject;
                     transports = transportService.getBySenderId(seller.getId());
-                    model.addAttribute(transports);
                     break;
                 default:
                     HoReCa hoReCa = (HoReCa) userObject;
                     transports = transportService.getBySenderId(hoReCa.getId());
-                    model.addAttribute("transports", transports);
                     break;
             }
         }
 
+        for (Transport transport : transports){
+            operations.add(transportService.toOperationDisplay(transport));
+        }
+
+        sortOperations(operations);
+        model.addAttribute("operations", operations);
         return "informationAboutAProduct";
     }
 

@@ -4,250 +4,294 @@
     <div class="w-layout-cell cell-3 w-layout-layout-column">
       <div class="wf-layout-layout">
 
-        <div th:each="production: ${productions}">
+        <div class="operation" th:each="operation: ${operations}">
 
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Description</p>
+          <div th:switch="${operation.getType().toString()}">
+
+            <span th:case="'Processing'">
+
+              <div class="w-layout-layout-column connection-fields informationBox centerText">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Processing</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Origin product name</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('originProductName')}"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Origin product type</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('originProductType')}"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">New Product name</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('newProductName')}"></p>
+                  </div>
+                </div>
+             </div>
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">New product type</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('newProductType')}"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Processor</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('processorCompanyName')}"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Description</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('operationDescription')}"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Date</p>
+                  </div>
+                </div>
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('date')}"></p>
+                  </div>
+                </div>
+              </div>
+
+            </span>
+
+            <span th:case="'Production'">
+
+              <div class="w-layout-layout-column connection-fields informationBox centerText">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Production</p>
+                  </div>
+                </div>
+              </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Created product</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('productName')}"></p>
+                </div>
               </div>
             </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${production.getDescription()}</p>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Product type</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('productType')}"></p>
+                </div>
               </div>
             </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Producer company name</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('producerCompanyName')}"></p>
+                </div>
+              </div>
+            </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Description</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('operationDescription')}"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Date</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('date')}"></p>
+                </div>
+              </div>
+            </div>
+            </span>
+
+            <span th:case="'Transport'">
+
+              <div class="w-layout-layout-column connection-fields informationBox centerText">
+                <div class="w-layout-column">
+                  <div class="w-layout-cell">
+                    <p class="informationItem">Transport</p>
+                  </div>
+                </div>
+              </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Product name</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('productName')}"></p>
+                </div>
+              </div>
+            </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Product type</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('productType')}"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Sender</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('senderCompanyName')}"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Receiver</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('receiverCompanyName')}"></p>
+                </div>
+              </div>
+            </div>
+
+              <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Description</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('operationDescription')}"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Departure</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('departureDate')}"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-layout-layout-column connection-fields informationBox">
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                  <p class="informationItem">Arrival</p>
+                </div>
+              </div>
+              <div class="w-layout-column">
+                <div class="w-layout-cell">
+                    <p class="informationItem rightText" th:text="${operation.getAttributs().get('arrivalDate')}"></p>
+                </div>
+              </div>
+            </div>
+
+            </span>
+            <span th:case="*">
+            </span>
           </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Certifications</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${production.getAddedCertifications()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Created product</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${production.getCreatedProduct()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Producer</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${production.getProducer()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Date</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${production.getDate()}</p>
-              </div>
-            </div>
-          </div>
-
         </div>
-
-        <div th:each="processing: ${process}">
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Description</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${processing.getDescription()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Certifications</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${processing.getAddedCertifications()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Origin product</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${processing.getOriginProduct()}</p>
-              </div>
-            </div>
-          </div>
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">New Product</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${processing.getNewProduct()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Processor</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${processing.getProcessor()}</p>
-              </div>
-            </div>
-          </div>
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Date</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${processing}.getDate()}</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div th:each="transport: ${transports}">
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Description</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getDescription()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Certifications</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getAddedCertifications()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Product</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getProduct()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Sender</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getSender()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Receiver</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getReceiver()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Departure</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getDeparture()}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-layout-layout-column connection-fields informationBox">
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem">Arrival</p>
-              </div>
-            </div>
-            <div class="w-layout-column">
-              <div class="w-layout-cell">
-                <p class="informationItem rightText">th:text="${transport.getArrival()}</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </div>
   </div>

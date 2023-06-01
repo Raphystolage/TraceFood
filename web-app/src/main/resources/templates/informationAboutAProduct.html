@@ -14,6 +14,22 @@
 
 <div th:replace="~{menu :: menu}"></div>
 
+
+<div class="w-layout-layout-column center-box-user wf-layout-layout">
+  <div class="w-layout-cell cell-3 w-layout-layout-column">
+    <div class="wf-layout-layout">
+      <div id="w-node-2" class="w-layout-cell">
+        <form id="searchForm" action="/informationAboutAProduct" method="POST">
+          <span>Identification number :
+            <input name="productId" class="sign-in-field"/>
+          </span>
+          <button type="submit" class="search-button clickableButton">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div th:replace="~{operations :: operations}"></div>
 
 </body>
