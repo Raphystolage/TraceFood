@@ -35,14 +35,37 @@ public class ProductController {
         return "informationAboutAProduct";
     }
 
+    @GetMapping("/userInformationAboutAProduct")
+    public String userInformationAboutAProduct() {
+        return "userInformationAboutAProduct";
+    }
+
+
     @GetMapping("/searchForAProduct")
     public String searchForAProduct() {
         return "searchForAProduct";
     }
 
+    @GetMapping("/userSearchForAProduct")
+    public String userSearchForAProduct() {
+        return "userSearchForAProduct";
+    }
+
     @PostMapping("/informationAboutAProduct")
     public String searchForAProduct(Model model, @RequestParam("productId") Long productId) {
+        List<OperationDisplay> operations = getOperations(productId);
+        model.addAttribute("operations", operations);
+        return "informationAboutAProduct";
+    }
 
+    @PostMapping("/userInformationAboutAProduct")
+    public String userSearchForAProduct(Model model, @RequestParam("productId") Long productId) {
+        List<OperationDisplay> operations = getOperations(productId);
+        model.addAttribute("operations", operations);
+        return "userInformationAboutAProduct";
+    }
+
+    private List<OperationDisplay> getOperations( Long productId) {
         Product product = productService.getById(productId);
         List<OperationDisplay> operations = new ArrayList<>();
 
@@ -62,9 +85,7 @@ public class ProductController {
         }
 
         sortOperations(operations);
-        model.addAttribute("operations", operations);
-
-        return "informationAboutAProduct";
+        return operations;
     }
 
     private List<OperationDisplay> addProductOperations(List<Processing> processes, List<Transport> transports, List<Production> productions) {

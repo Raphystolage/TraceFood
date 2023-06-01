@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" style="font-family: Arial;">
+<html style="font-family: Arial;">
 
 <head>
   <meta charset="UTF-8">
@@ -10,17 +10,15 @@
 
 <body>
 
-<header class="wf-layout-layout">
-  <div class="w-layout-cell">
-      <h1 class="tracefood">TRACEFOOD</h1>
-  </div>
-</header>
+<div th:replace="~{header :: header}"></div>
+
+<div th:replace="~{menu :: menu}"></div>
 
 <div class="w-layout-layout-column center-box-user wf-layout-layout">
   <div class="w-layout-cell cell-3 w-layout-layout-column">
     <div class="wf-layout-layout">
       <div id="w-node-2" class="w-layout-cell">
-        <form id="searchForm" action="/informationAboutAProduct" method="POST">
+        <form id="searchForm" action="/userInformationAboutAProduct" method="POST">
           <span>Identification number :
             <input name="productId" class="sign-in-field"/>
           </span>
@@ -30,9 +28,6 @@
     </div>
   </div>
 </div>
-
-<div th:replace="~{operations :: operations}"></div>
-
 </body>
 
 </html>

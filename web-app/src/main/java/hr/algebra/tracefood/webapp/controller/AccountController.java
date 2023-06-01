@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -77,44 +78,6 @@ public class AccountController {
         return "accountInformation";
     }
 
-    @DeleteMapping("/deleteAccount")
-    public String deleteAccount(Model model) {
-
-        HttpSession session = request.getSession();
-        Object userObject = session.getAttribute("user");
-        String userType = (String) session.getAttribute("userType");
-
-        User user = new User();
-        if (userType != null) {
-            switch (userType) {
-                case "Seller":
-                    Seller seller = (Seller) userObject;
-                    SellerService sellerService = new SellerService();
-                    sellerService.deleteById(seller.getId());
-                    break;
-                case "Processor":
-                    Processor processor = (Processor) userObject;
-                    ProcessorService processorService = new ProcessorService();
-                    processorService.deleteById(processor.getId());
-                    break;
-                case "Producer":
-                    Producer producer = (Producer) userObject;
-                    ProducerService producerService = new ProducerService();
-                    producerService.deleteById(producer.getId());
-                    break;
-                case "HoReCa":
-                    HoReCa hoReCa = (HoReCa) userObject;
-                    HoReCaService hoReCaService = new HoReCaService();
-                    hoReCaService.deleteById(hoReCa.getId());
-                    break;
-                default:
-                    System.out.println("User type not recognized.");
-                    break;
-            }
-        }
-        return "accountInformation";
-    }
-
     @GetMapping("/history")
 
     public String history(Model model) {
@@ -164,16 +127,16 @@ public class AccountController {
 
         sortOperations(operations);
         model.addAttribute("operations", operations);
-        return "informationAboutAProduct";
+        return "history";
     }
 
-    @DeleteMapping("/addNewCertification")
+    @PostMapping("/addNewCertification")
     public String addNewCertification(Model model, @RequestParam("newCertification") CertificationType newCertification) {
         /*HttpSession session = request.getSession();
         List<CertificationType> giveableCertifications = session.getAttribute("user").getGiveableCertification();
         giveableCertifications.add(newCertification);
         session.getAttribute("user").setGiveableCertification(giveableCertifications);*/
-        return "accountInformation";
+        return "redirect:/accountInformation";
     }
 
 }

@@ -2,9 +2,11 @@
     <div class="menu">
         <ul>
             <li><a th:href="@{/accountInformation}">Account information</a></li>
-            <li><a th:href="@{/searchForAProduct}">Information about a product</a></li>
+            <li><a th:href="@{/userSearchForAProduct}">Information about a product</a></li>
             <li><a th:href="@{/addAnOperation}">Add an Operation</a></li>
             <li><a th:href="@{/history}">History</a></li>
+            <li><form action="/signOut" method="POST"><button class="menuButton" type="submit">Sign out</button></form></li>
+
         </ul>
     </div>
 </th:block>

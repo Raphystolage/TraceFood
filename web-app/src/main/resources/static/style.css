@@ -35,6 +35,7 @@
   margin-left: auto;
   margin-right: auto;
   font-family: Exo, sans-serif;
+  text-decoration: none;
 }
 
 .w-layout-layout {
@@ -262,7 +263,35 @@
   margin-left: auto;
 }
 
-/* User home page*/
+/* Home pages*/
+
+.menuHomePage {
+  padding: 10px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.menuHomePage ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menuHomePage li {
+  display: inline-block;
+}
+
+.menuHomePage li a {
+  color: #333;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.menuHomePage li a:hover {
+  color: #307211;
+}
 
 .homeButton{
   max-height: 25px;
@@ -284,7 +313,6 @@
 .informationBox{
   width: 1500px;
   border-bottom: solid 1px rgba(130, 180, 122, .25);
-
 }
 
 /* information about a product*/
@@ -304,6 +332,16 @@
 }
 
 /* menu */
+
+.menuButton{
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+}
+
+.menuButton:hover{
+  color: #306e45;
+}
 
 .menu {
   padding: 10px;
@@ -335,7 +373,7 @@
 
 /* Operations pages */
 
-.operation-button{
+.operation-button {
   max-height: 25px;
   width: 270px;
   margin-left: auto;
@@ -350,7 +388,7 @@
 }
 
 .centerText{
-color: #aa063f
+  color: #aa063f;
 }
 
 .operation{
@@ -359,4 +397,3 @@ color: #aa063f
   border: black solid 2px;
   background-color: white;
 }
-

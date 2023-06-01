@@ -53,7 +53,7 @@ public class OperationController {
         Producer producer = (Producer) session.getAttribute("user");
         ProductionService productionService = new ProductionService();
         productionService.createProductionOptimized(description, producer, productionDate, productName, ProductType.valueOf(productType), isFinishedProduct);
-        return "userHomePage";
+        return "redirect:/userHomePage";
     }
 
     @PostMapping("/addAProcessing")
@@ -71,7 +71,7 @@ public class OperationController {
         ProductService productService = new ProductService();
         Product originProduct = productService.getById(OriginProductID);
         processingService.createProcessingOptimized(description, originProduct, newProductName, ProductType.valueOf(newProductType), processor, processingDate, isNewFinishedProduct);
-        return "userHomePage";
+        return "redirect:/userHomePage";
     }
 
     @PostMapping("/addATransport")
@@ -116,7 +116,7 @@ public class OperationController {
         ProductService productService = new ProductService();
         Product product = productService.getById(productID);
         transportService.createTransportOptimized(description, product, sender, receiver, departureDate, arrivalDate);
-        return "userHomePage";
+        return "redirect:/userHomePage";
     }
 
 }
