@@ -16,8 +16,11 @@ public class ProductionService extends AbstractBlockchainDBStorableService<Produ
     @Autowired
     private ProductService productService;
 
-    public List<Production> getByCreatedProductId(Long id) {
-        return ((ProductionRepository) repository).getByCreatedProduct(productService.getById(id).orElse(null));
+    public List<Production> getByCreatedProductId(Long createdProductId) {
+        return ((ProductionRepository) repository).getByCreatedProduct(productService.getById(createdProductId).orElse(null));
+    }
+    public List<Production> getByProducerId(Long producerId) {
+        return ((ProductionRepository) repository).getByProducerId(producerId);
     }
 
 }

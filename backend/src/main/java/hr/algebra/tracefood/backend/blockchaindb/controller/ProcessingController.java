@@ -2,6 +2,7 @@ package hr.algebra.tracefood.backend.blockchaindb.controller;
 
 import hr.algebra.tracefood.backend.blockchaindb.model.Processing;
 import hr.algebra.tracefood.backend.blockchaindb.model.Production;
+import hr.algebra.tracefood.backend.blockchaindb.repository.ProcessingRepository;
 import hr.algebra.tracefood.backend.blockchaindb.service.ProcessingService;
 import hr.algebra.tracefood.backend.blockchaindb.service.ProductionService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,10 @@ public class ProcessingController extends AbstractBlockchainDBStorableController
     @GetMapping(params = "originProductId")
     public List<Processing> getByProductId(@RequestParam("originProductId") Long originProductId) {
         return ((ProcessingService) service).getByOriginProductId(originProductId);
+    }
+    @GetMapping(params = "processorId")
+    public List<Processing> getByProcessorId(@RequestParam Long processorId) {
+        return ((ProcessingService) service).getByProcessorId(processorId);
     }
 
 }

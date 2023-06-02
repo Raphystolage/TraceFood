@@ -19,8 +19,11 @@ public class ProcessingService extends AbstractBlockchainDBStorableService<Proce
     @Autowired
     private ProductService productService;
 
-    public List<Processing> getByOriginProductId(Long id) {
-        return ((ProcessingRepository) repository).getByOriginProduct(productService.getById(id).orElse(null));
+    public List<Processing> getByOriginProductId(Long originProductId) {
+        return ((ProcessingRepository) repository).getByOriginProduct(productService.getById(originProductId).orElse(null));
+    }
+    public List<Processing> getByProcessorId(Long processorId) {
+        return ((ProcessingRepository) repository).getByProcessorId(processorId);
     }
 
 }

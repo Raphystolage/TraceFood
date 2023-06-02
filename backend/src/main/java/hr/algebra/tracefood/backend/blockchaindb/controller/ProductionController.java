@@ -21,5 +21,9 @@ public class ProductionController extends AbstractBlockchainDBStorableController
     public List<Production> getByProductId(@RequestParam("createdProductId") Long createdProductId) {
         return ((ProductionService) service).getByCreatedProductId(createdProductId);
     }
+    @GetMapping(params = "producerId")
+    public List<Production> getByProducerId(@RequestParam("producerId") Long producerId) {
+        return ((ProductionService) service).getByProducerId(producerId);
+    }
 
 }
