@@ -23,10 +23,10 @@ public class TransportController extends AbstractBlockchainDBStorableController<
     public List<Transport> getByProductId(@RequestParam("productId") Long productId) {
         return ((TransportService) service).getByProductId(productId);
     }
-/*
+
     @GetMapping(params = "senderId")
     public List<Transport> getBySenderId(@RequestParam("senderId") Long senderId) {
         return ((TransportService) service).getBySenderId(senderId);
-    }*/
+    }
 
 }

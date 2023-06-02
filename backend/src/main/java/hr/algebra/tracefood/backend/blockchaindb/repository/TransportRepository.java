@@ -11,5 +11,6 @@ import java.util.List;
 public interface TransportRepository extends JpaRepository<Transport, Long> {
 
     public List<Transport> getByProduct(Product product);
+    public List<Transport> getBySenderId(Long senderId);
 
 }

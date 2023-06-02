@@ -22,4 +22,9 @@ public class TransportService extends AbstractBlockchainDBStorableService<Transp
     public List<Transport> getByProductId(Long id) {
         return ((TransportRepository) repository).getByProduct(productService.getById(id).orElse(null));
     }
+
+    public List<Transport> getBySenderId(Long senderId) {
+        return ((TransportRepository) repository).getBySenderId(senderId);
+    }
+
 }
