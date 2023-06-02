@@ -97,7 +97,7 @@ public class AccountController {
                 case "Processor":
                     Processor processor = (Processor) userObject;
                     List<Processing> processes = processingService.getByProcessorId(processor.getId());
-                    transports = transportService.getBySenderId(processor.getId());
+                    transports = transportService.getBySenderId(processor.getUser().getId());
                     for (Processing processing : processes){
                         operations.add(processingService.toOperationDisplay(processing));
                     }
@@ -108,15 +108,15 @@ public class AccountController {
                     for (Production production : productions){
                         operations.add(productionService.toOperationDisplay(production));
                     }
-                    transportService.getBySenderId(producer.getId());
+                    transports = transportService.getBySenderId(producer.getUser().getId());
                     break;
                 case "Seller":
                     Seller seller = (Seller) userObject;
-                    transports = transportService.getBySenderId(seller.getId());
+                    transports = transportService.getBySenderId(seller.getUser().getId());
                     break;
                 default:
                     HoReCa hoReCa = (HoReCa) userObject;
-                    transports = transportService.getBySenderId(hoReCa.getId());
+                    transports = transportService.getBySenderId(hoReCa.getUser().getId());
                     break;
             }
         }

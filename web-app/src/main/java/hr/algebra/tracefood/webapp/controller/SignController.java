@@ -283,7 +283,6 @@ public class SignController {
 
     @PostMapping("/signOut")
     public String SignOut(Model model) {
-        System.out.println("out");
         HttpSession session = request.getSession();
         session.removeAttribute("user");
         session.removeAttribute("userType");

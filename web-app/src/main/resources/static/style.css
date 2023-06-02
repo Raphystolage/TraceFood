@@ -189,32 +189,23 @@
   grid-gap: 10px;
 }
 
-#w-node-chooseUserType1 {
+#chooseUserType1 {
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr;
 }
 
-#w-node-chooseUserType2,
-#w-node-chooseUserType3,
-#w-node-chooseUserType4 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
-}
-
-#w-node-chooseUserType5 {
+#chooseUserType2 {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
-#w-node-chooseUserType6,
-#w-node-chooseUserType7,
-#w-node-chooseUserType8,
-#w-node-chooseUserType9 {
+.chooseUserType{
   grid-area: span 1 / span 1 / span 1 / span 1;
+
 }
 
 /* Sign in and Sign up pages */
 
-.sign-in-field {
+.field {
   color: #306e45;
   background-color: #fff;
   border-radius: 20px;

@@ -10,67 +10,67 @@
 
 <body>
 
-<div th:replace="~{header :: header}"></div>
+  <div th:replace="~{header :: header}"></div>
 
-<div th:replace="~{menu :: menu}"></div>
+  <div th:replace="~{menu :: menu}"></div>
 
-<div class="w-layout-layout-column center-box wf-layout-layout">
-    <div class="w-layout-cell cell-3 w-layout-layout-column">
-      <form class="signUpForm" action="/addAProduction" method="POST">
-        <div class="w-layout-layout-column connection-fields">
-          <div class="w-layout-column">
-            <div class="w-layout-cell cell-5">
-              <p class="operation-button">Product name</p>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <p class="operation-button">Description</p>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <p class="operation-button">Date</p>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <p class="operation-button">Product type</p>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <p class="operation-button">Final product ?</p>
-            </div>
+  <div class="w-layout-layout-column center-box wf-layout-layout">
+      <div class="w-layout-cell cell-3 w-layout-layout-column">
+        <form class="signUpForm" action="/addAProduction" method="POST">
+          <div class="w-layout-layout-column connection-fields">
+            <div class="w-layout-column">
+              <div class="w-layout-cell cell-5">
+                <p class="operation-button">Product name</p>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <p class="operation-button">Description</p>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <p class="operation-button">Date</p>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <p class="operation-button">Product type</p>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <p class="operation-button">Final product ?</p>
+              </div>
 
-          </div>
-          <div class="w-layout-column">
-            <div class="w-layout-cell cell-5">
-              <input name="productName" class="sign-in-field" type="text" required/>
             </div>
-            <div class="w-layout-cell cell-5">
-              <input name="description" class="sign-in-field" type="text" required/>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <input name="dateOfCreation" class="sign-in-field" type="date" required/>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <select name="productType" class="sign-in-field" required>
-                <option th:each="product : ${T(hr.algebra.tracefood.webapp.model.ProductType).values()}"
-                        th:value="${product.name()}" th:text="${product.toString()}"></option>
-              </select>
-            </div>
-            <div class="w-layout-cell cell-5">
-              <select name="isFinishedProduct" class="sign-in-field" required>
-                <option value="true">Yes</option>
-                <option value="true">No</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="w-layout-cell cell-2">
-          <div class="w-layout-layout sign-in wf-layout-layout">
-            <div class="w-layout-cell cell-9">
-              <button type="submit" class="clickableButton sign-in">Add</button>
+            <div class="w-layout-column">
+              <div class="w-layout-cell cell-5">
+                <input name="productName" class="field" type="text" required/>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <input name="description" class="field" type="text" required/>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <input name="dateOfCreation" class="field" type="date" required/>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <select name="productType" class="field" required>
+                  <option th:each="product : ${T(hr.algebra.tracefood.webapp.model.ProductType).values()}"
+                          th:value="${product.name()}" th:text="${product.toString()}"></option>
+                </select>
+              </div>
+              <div class="w-layout-cell cell-5">
+                <select name="isFinishedProduct" class="field" required>
+                  <option value="true">Yes</option>
+                  <option value="true">No</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+          <div class="w-layout-cell cell-2">
+            <div class="w-layout-layout sign-in wf-layout-layout">
+              <div class="w-layout-cell cell-9">
+                <button type="submit" class="clickableButton sign-in">Add</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </body>
 
 </html>

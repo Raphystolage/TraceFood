@@ -37,24 +37,24 @@
           </div>
           <div class="w-layout-column">
             <div class="w-layout-cell cell-5">
-              <input name="companyName" class="sign-in-field" type="text" required/>
+              <input name="companyName" class="field" type="text" required/>
             </div>
             <div class="w-layout-cell cell-5">
-              <input name="companyAddress" class="sign-in-field" type="text" required/>
+              <input name="companyAddress" class="field" type="text" required/>
             </div>
             <div class="w-layout-cell cell-5">
 
-              <select id="type" name="type" class="sign-in-field" required>
+              <select id="type" name="type" class="field" required>
                 <option th:each="seller : ${T(hr.algebra.tracefood.webapp.model.SellerType).values()}"
                         th:value="${seller.name()}" th:text="${seller.toString()}"></option>
               </select>
 
             </div>
             <div class="w-layout-cell cell-5">
-              <input name="emailAddress" class="sign-in-field" placeholder="name@example.com" type="email" required/>
+              <input name="emailAddress" class="field" placeholder="name@example.com" type="email" required/>
             </div>
             <div class="w-layout-cell cell-5">
-              <input name="password" class="sign-in-field" type="password" required/>
+              <input name="password" class="field" type="password" required/>
             </div>
           </div>
         </div>

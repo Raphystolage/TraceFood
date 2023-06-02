@@ -22,18 +22,18 @@
 						<label for="emailAddress" class="sign-button">Email address</label>
 					</div>
 					<div class="w-layout-cell cell-5">
-						<input id="emailAddress" name="emailAddress" class="sign-in-field" type="email" placeholder="name@example.com" required />
+						<input id="emailAddress" name="emailAddress" class="field" type="email" placeholder="name@example.com" required />
 					</div>
 					<div class="w-layout-cell cell-5">
 						<label for="password" class="sign-button ">Password</label>
 					</div>
 					<div class="w-layout-cell cell-5">
-						<input id="password" name="password" class="sign-in-field " type="password" required />
+						<input id="password" name="password" class="field " type="password" required />
 					</div>
 					<div class="w-layout-cell cell-5">
 						<label for="password" class="sign-button ">User type</label>
 					</div>
-						<select id="type" name="type" class="sign-in-field" required>
+						<select id="type" name="type" class="field" required>
 							<option th:each="userType : ${T(hr.algebra.tracefood.webapp.model.UserType).values()}"
 									th:value="${userType}" th:text="${userType.toString()}"></option>
 						</select>

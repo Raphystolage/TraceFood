@@ -16,4 +16,10 @@ public class HomePageController {
         return "homePage";
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "homePage";
+    }
+
+
 }
