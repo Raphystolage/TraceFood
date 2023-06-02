@@ -13,6 +13,7 @@ Backend app :
   * Credentials for MySQL are :
     * Username : mysqluser
     * Password : password
+ 
     It can be changed in the file "application.properties" (located in src/main/ressources)
    
 Frontend app : 
