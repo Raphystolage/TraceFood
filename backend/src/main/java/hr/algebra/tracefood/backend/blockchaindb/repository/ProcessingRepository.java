@@ -11,5 +11,6 @@ import java.util.List;
 public interface ProcessingRepository extends JpaRepository<Processing, Long> {
 
     public List<Processing> getByOriginProduct(Product product);
+    public List<Processing> getByProcessorId(Long processorId);
 
 }

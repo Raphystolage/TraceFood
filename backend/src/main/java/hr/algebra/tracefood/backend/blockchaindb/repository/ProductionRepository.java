@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface ProductionRepository extends JpaRepository<Production, Long> {
     public List<Production> getByCreatedProduct(Product createdProduct);
+    public List<Production> getByProducerId(Long producerId);
+
 }
